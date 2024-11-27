@@ -1,0 +1,1 @@
+g++ main.cpp for_dump.cpp tree_commands.cpp input_tree.cpp -o differenciator

@@ -1,0 +1,18 @@
+digraph
+{
+bgcolor="#F2EECB";
+rankdir = TB;
+POINT_0x57977ae09490[shape=Mrecord, label = "type - 3 | value - 3", style="filled",fillcolor="#D7CF8D"]
+POINT_0x57977ae098c0[shape=Mrecord, label = "type - 3 | value - 0", style="filled",fillcolor="#D7CF8D"]
+POINT_0x57977ae098e0[shape=Mrecord, label = "type - 2 | value - 1", style="filled",fillcolor="#D7CF8D"]
+POINT_0x57977ae09900[shape=Mrecord, label = "type - 1 | value - 6", style="filled",fillcolor="#D7CF8D"]
+POINT_0x57977ae09920[shape=Mrecord, label = "type - 3 | value - 1", style="filled",fillcolor="#D7CF8D"]
+POINT_0x57977ae09940[shape=Mrecord, label = "type - 1 | value - 20", style="filled",fillcolor="#D7CF8D"]
+POINT_0x57977ae09960[shape=Mrecord, label = "type - 2 | value - 1", style="filled",fillcolor="#D7CF8D"]
+POINT_0x57977ae09490 -> POINT_0x57977ae098c0
+POINT_0x57977ae09490 -> POINT_0x57977ae09920
+POINT_0x57977ae098c0 -> POINT_0x57977ae098e0
+POINT_0x57977ae098c0 -> POINT_0x57977ae09900
+POINT_0x57977ae09920 -> POINT_0x57977ae09940
+POINT_0x57977ae09920 -> POINT_0x57977ae09960
+}
