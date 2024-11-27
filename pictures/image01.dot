@@ -2,17 +2,9 @@ digraph
 {
 bgcolor="#F2EECB";
 rankdir = TB;
-POINT_0x5ea2d7f1a490[shape=Mrecord, label = "type - OPERATION(3) | /", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5ea2d7f1a8c0[shape=Mrecord, label = "type - OPERATION(0) | +", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5ea2d7f1a8e0[shape=Mrecord, label = "type - VARIABLE (2) | value - x (num - 1))", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5ea2d7f1a900[shape=Mrecord, label = "type - NUMBER (1) | value - 6", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5ea2d7f1a920[shape=Mrecord, label = "type - OPERATION(1) | -", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5ea2d7f1a940[shape=Mrecord, label = "type - NUMBER (1) | value - 20", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5ea2d7f1a960[shape=Mrecord, label = "type - VARIABLE (2) | value - y (num - 2))", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5ea2d7f1a490 -> POINT_0x5ea2d7f1a8c0
-POINT_0x5ea2d7f1a490 -> POINT_0x5ea2d7f1a920
-POINT_0x5ea2d7f1a8c0 -> POINT_0x5ea2d7f1a8e0
-POINT_0x5ea2d7f1a8c0 -> POINT_0x5ea2d7f1a900
-POINT_0x5ea2d7f1a920 -> POINT_0x5ea2d7f1a940
-POINT_0x5ea2d7f1a920 -> POINT_0x5ea2d7f1a960
+POINT_0x5cea3612e490[shape=Mrecord, label = "type - OPERATION(0) | +", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5cea3612e8c0[shape=Mrecord, label = "type - VARIABLE (2) | value - x (num - 1))", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5cea3612e8e0[shape=Mrecord, label = "type - NUMBER (1) | value - 6", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5cea3612e490 -> POINT_0x5cea3612e8c0
+POINT_0x5cea3612e490 -> POINT_0x5cea3612e8e0
 }
