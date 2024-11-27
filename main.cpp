@@ -1,5 +1,3 @@
-
-
 #include "differenciator_h.h" 
 #include "for_dump.h"
 #include "tree_commands.h"
@@ -44,8 +42,8 @@
 
 
 // Node* create_new_node(TypeNode type, int value, Node* left, Node* right);
-void print_tree(Node* node);
-void print_node(Node* node);
+void print_tree(Node* node, VariableArr* all_var);
+void print_node(Node* node, VariableArr* all_var);
 
 
 int main()
@@ -63,10 +61,17 @@ int main()
     //                             create_new_node(NUMBER, 20, NULL, NULL));
 
     get_tree(file, &tree, &all_var);
+
+    // write all_var
+    for (int i = 0; i < all_var.size; i++)
+    {
+        printf("%d: %c - name, %d - num\n", i, all_var.arr[i].name, all_var.arr[i].num);
+    }
+
     printf("HE CAN READ\n");
-    dump(tree.root, &st_dump);
+    dump(tree.root, &st_dump, &all_var);
     
-    print_tree(tree.root);
+    print_tree(tree.root, &all_var);
 }
 
 
@@ -78,22 +83,22 @@ int main()
 // }
 
 
-void print_tree(Node* node)
+void print_tree(Node* node, VariableArr* all_var)
 {   
     if (node == NULL) return;
 
     printf("(");
-    print_tree(node->left);
+    print_tree(node->left, all_var);
 
     
-    print_node(node);
+    print_node(node, all_var);
     
-    print_tree(node->right);
+    print_tree(node->right, all_var);
     printf(")");
 }
 
 
-void print_node(Node* node)
+void print_node(Node* node, VariableArr* all_var)
 {
     switch (node->type)
     {
@@ -107,44 +112,56 @@ void print_node(Node* node)
     {
         // char* var_name = find_var_name(node->value); // тут номер переменной
         // printf("%s", var_name);
-        printf("x");
+
+        // Is there a need check here?
+        for (int i = 0; i < all_var->size; i++) 
+        {
+            // printf("%c - i var\n", all_var->arr[i].name);
+            if (all_var->arr[i].num == node->value) { printf("%c", all_var->arr[i].name); break; }
+        }
+        // printf("x");
         break;
     }
 
     case OPERATION:
     {
-        switch (node->value)
+        int len_struct_arr = (int) (sizeof(op_arr) / sizeof(Operation));
+        for (int i = 0; i < len_struct_arr; i++)
         {
-        case ADD:
-        {
-            printf("+");
-            break;
+            if (op_arr[i].num == node->value) { printf("%s", op_arr[i].name); break; }
         }
+        // switch (node->value)
+        // {
+        // case ADD:
+        // {
+        //     printf("+");
+        //     break;
+        // }
 
-        case SUB:
-        {
-            printf("-");
-            break;
-        }
+        // case SUB:
+        // {
+        //     printf("-");
+        //     break;
+        // }
 
-        case MUL:
-        {
-            printf("*");
-            break;
-        }
+        // case MUL:
+        // {
+        //     printf("*");
+        //     break;
+        // }
 
-        case DIV:
-        {
-            printf("/");
-            break;
-        }
+        // case DIV:
+        // {
+        //     printf("/");
+        //     break;
+        // }
         
-        default:
-        {
-            printf("ERROR num operation\n");
-            break;
-        }
-        }
+        // default:
+        // {
+        //     printf("ERROR num operation\n");
+        //     break;
+        // }
+        // }
         break;
     }
     

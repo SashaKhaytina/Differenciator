@@ -97,13 +97,18 @@ void fill_tree(Node* current_node, int* point_current_letter, char* arr_file_tre
         // current_node->value = arr_file_tree[*point_current_letter];
         printf("VARIABLE: %d - type, %c - name\n", current_node->type, current_node->value);
 
-        *point_current_letter += 1;
+        // *point_current_letter += 1;
         // FUNC ADD VARIABLE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         bool know_this_var = false;
         for (size_t i = 0; i < all_var->size; i++)
         {
+            // printf("%c - arr_file_tree[*point_current_letter]\n", arr_file_tree[*point_current_letter]);
+            // printf("%c - all_var->arr[i].name\n", all_var->arr[i].name);
+
             if (all_var->arr[i].name == arr_file_tree[*point_current_letter]) { know_this_var = true; current_node->value = all_var->arr[i].num; printf("FIND!\n"); break; }
         }
+
+        // printf("%d - know_this_var\n", know_this_var);
 
         if (!know_this_var)
         {
@@ -111,6 +116,8 @@ void fill_tree(Node* current_node, int* point_current_letter, char* arr_file_tre
             all_var->arr[all_var->size - 1] = {(int)all_var->size, arr_file_tree[*point_current_letter]};
             current_node->value = all_var->size; // Говорим, что ЭТОТ номер ее
         }
+        // printf("PRINT 2 VARIABLE: %d - type, %d - num (val)\n", current_node->type, current_node->value);
+        *point_current_letter += 1;
     }
     else if (isdigit(arr_file_tree[*point_current_letter]) != 0) // num
     {

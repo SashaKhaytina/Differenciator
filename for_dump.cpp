@@ -5,20 +5,44 @@
 
 static void create_png        (int num);
 static void graph_create_edge (Node* node, FILE* file);       
-static void graph_create_point(Node* node, FILE* file);     
+static void graph_create_point(Node* node, FILE* file, VariableArr* all_var);     
 
 
-static void graph_create_point(Node* node, FILE* file)
+static void graph_create_point(Node* node, FILE* file, VariableArr* all_var)
 {   
     if (node == NULL) return;
 
     // if(node->left != NULL && node->right != NULL) fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - %d | value - %d\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->type, node->value, ELEM_TREE_COLOR);
     // else                                          fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - %d | value - %d\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->type, node->value, SHEET_TREE_COLOR);
 
-    fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - %d | value - %d\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->type, node->value, ELEM_TREE_COLOR);
+    // if (node->type == OPERATION) fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - %d | value - %d\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->type, node->value, ELEM_TREE_COLOR);
+
+    if (node->type == OPERATION)
+    {
+        int len_struct_arr = (int) (sizeof(op_arr) / sizeof(Operation));
+        for (int i = 0; i < len_struct_arr; i++)
+        {
+            if (op_arr[i].num == node->value) { fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - OPERATION(%d) | %s\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->value, op_arr[i].name, ELEM_TREE_COLOR); break; }
+        }
+    }
+    else if (node->type == NUMBER) fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - NUMBER (%d) | value - %d\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->type, node->value, ELEM_TREE_COLOR);
+    else // Var
+    {
+        char name_var = 0;
+        for (int i = 0; i < all_var->size; i++)
+        {
+            if (all_var->arr[i].num == node->value) { name_var = all_var->arr[i].name; break;}
+        }
+
+        fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - VARIABLE (%d) | value - %c (num - %d))\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->type, name_var, node->value, ELEM_TREE_COLOR);
+    }
+
+
+
+    // else fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - %d | value - %d\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->type, node->value, ELEM_TREE_COLOR);
     
-    graph_create_point(node->left, file);
-    graph_create_point(node->right, file);
+    graph_create_point(node->left, file, all_var);
+    graph_create_point(node->right, file, all_var);
 }   
 
 
@@ -45,7 +69,7 @@ static void create_png(int num)
 
 
 
-void dump(Node* node, ForDump* st_dump) // рисует поддерево
+void dump(Node* node, ForDump* st_dump, VariableArr* all_var) // рисует поддерево
 {
     st_dump->dumps_counter++;
     int number_of_dump = st_dump->dumps_counter;
@@ -58,7 +82,7 @@ void dump(Node* node, ForDump* st_dump) // рисует поддерево
 
     fprintf(file, "digraph\n{\nbgcolor=\"%s\";\nrankdir = TB;\n", FONT_COLOR);
 
-    graph_create_point(node, file);
+    graph_create_point(node, file, all_var);
 
     graph_create_edge(node, file);
 
