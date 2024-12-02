@@ -1,4 +1,5 @@
 #include "input_tree.h"
+#include "math_commands.h"
 
 #include <ctype.h>
 #include <stdlib.h>

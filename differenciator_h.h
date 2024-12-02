@@ -12,13 +12,13 @@ enum TypeNode
     OPERATION
 };
 
-enum AllOperations
-{
-    ADD,
-    SUB,
-    MUL,
-    DIV,
-};
+// enum AllOperations
+// {
+//     ADD,
+//     SUB,
+//     MUL,
+//     DIV,
+// };
 
 
 struct ForDump
@@ -55,13 +55,13 @@ struct Tree
     Node* root;
 };
 
-struct Operation
-{
-    AllOperations num;
-    char name[10]; // mabye for sin, sqrt ...
-    // void (*to_do_comm)(FILE* file_asm, Asm_SPU* proc, MashineCode com);
-    Node* (*diff_form)(Node* current_node);
-};
+// struct Operation
+// {
+//     AllOperations num;
+//     char name[10]; // mabye for sin, sqrt ...
+//     // void (*to_do_comm)(FILE* file_asm, Asm_SPU* proc, MashineCode com);
+//     Node* (*diff_form)(Node* current_node);
+// };
 
 
 // // #include "diff_formuls.h"
@@ -76,7 +76,8 @@ struct Operation
 //                                 {MUL, "*", diff_mul},
 //                                 {DIV, "/", diff_div}
 //                             };
-#include "diff_formuls.h"
+
+// #include "diff_formuls.h" // is it bad?
 
 const char* const FILE_MATH = "math_problem.txt";
 

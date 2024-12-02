@@ -1,4 +1,5 @@
 #include "differenciator_h.h" 
+#include "math_commands.h"
 #include "for_dump.h"
 #include "tree_commands.h"
 #include "input_tree.h"
@@ -74,10 +75,16 @@ int main()
     
     print_tree(tree.root, &all_var);
 
-    printf("GET DIFF\n");
-    Tree diff_tree = {};
-    diff_tree.root = diff(tree.root);
-    print_tree(diff_tree.root, &all_var);
+    printf("\n");
+
+    solve_subtree(tree.root);
+    dump(tree.root, &st_dump, &all_var);
+    print_tree(tree.root, &all_var);
+
+    // printf("GET DIFF\n");
+    // Tree diff_tree = {};
+    // diff_tree.root = diff(tree.root);
+    // print_tree(diff_tree.root, &all_var);
 }
 
 

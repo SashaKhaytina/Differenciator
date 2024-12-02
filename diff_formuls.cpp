@@ -1,9 +1,11 @@
 #include "diff_formuls.h"
+#include "math_commands.h"
 
 #include "tree_commands.h"
 #include "differentiation.h" // it is bad...
 
 static Node* copy_branch(Node* current_node);
+
 
 
 Node* diff_add(Node* current_node)

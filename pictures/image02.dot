@@ -1,0 +1,14 @@
+digraph
+{
+bgcolor="#F2EECB";
+rankdir = TB;
+POINT_0x587dad99f490[shape=Mrecord, label = "type - OPERATION(0) | +", style="filled",fillcolor="#D7CF8D"]
+POINT_0x587dad99f8c0[shape=Mrecord, label = "type - NUMBER (1) | value - 11", style="filled",fillcolor="#D7CF8D"]
+POINT_0x587dad99f9e0[shape=Mrecord, label = "type - OPERATION(2) | *", style="filled",fillcolor="#D7CF8D"]
+POINT_0x587dad99fa00[shape=Mrecord, label = "type - NUMBER (1) | value - 10", style="filled",fillcolor="#D7CF8D"]
+POINT_0x587dad99fa60[shape=Mrecord, label = "type - VARIABLE (2) | value - x (num - 1))", style="filled",fillcolor="#D7CF8D"]
+POINT_0x587dad99f490 -> POINT_0x587dad99f8c0
+POINT_0x587dad99f490 -> POINT_0x587dad99f9e0
+POINT_0x587dad99f9e0 -> POINT_0x587dad99fa00
+POINT_0x587dad99f9e0 -> POINT_0x587dad99fa60
+}

@@ -1,6 +1,8 @@
 #include "differentiation.h"
+#include "math_commands.h"
 
 #include "tree_commands.h"
+
 
 
 

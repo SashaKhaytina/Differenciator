@@ -1,5 +1,7 @@
 #include "for_dump.h"
 
+#include "math_commands.h"
+
 #include <stdio.h>
 
 
