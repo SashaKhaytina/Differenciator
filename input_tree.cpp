@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "tree_commands.h"
+#include "recursive_descent_algorithm.h"
 
 static void read_new_node(Node* current_node, int* point_current_letter, char* arr_file_tree, BranchDirection line, VariableArr* all_var);
 static size_t size_file(FILE* file);
@@ -53,9 +54,10 @@ void get_tree(FILE* file, Tree* tree, VariableArr* all_var)
     int point_current_letter = 1;
 
     // создаем ячеку с этим именем
-    tree->root = create_new_node(DEFAULT, 0, NULL, NULL); // ????????????????????????????????????????????????
+    // tree->root = create_new_node(DEFAULT, 0, NULL, NULL); // ????????????????????????????????????????????????
 
-    fill_tree(tree->root, &point_current_letter, arr_file_tree, all_var);
+    // fill_tree(tree->root, &point_current_letter, arr_file_tree, all_var);
+    tree->root = GetG(arr_file_tree, all_var);
 }
 
 
@@ -90,7 +92,7 @@ void fill_tree(Node* current_node, int* point_current_letter, char* arr_file_tre
 
     // ---------------------------------------------------------------------------------------------------------------
 
-    // тут должен быть ввод текущей ячейки
+    // тут должен быть ввод текущей ячейки     это вообще про что?
 
     if (isalpha(arr_file_tree[*point_current_letter]) != 0) // variable
     {
