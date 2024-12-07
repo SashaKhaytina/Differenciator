@@ -29,7 +29,7 @@ Node* diff(Node* current_node)
         {
             // return create_new_node(NUMBER, 1, NULL, NULL);
             // return FUNC_FOR_THIS_OP;
-            int len_struct_arr = (int) (sizeof(op_arr) / sizeof(Operation));
+            int len_struct_arr = (int) (sizeof(op_arr) / sizeof(Operation)); // TODO: why int, why not const
             for (int i = 0; i < len_struct_arr; i++)
             {
                 if (op_arr[i].num == current_node->value) return op_arr[i].diff_form(current_node);

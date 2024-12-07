@@ -30,13 +30,13 @@ static void graph_create_point(Node* node, FILE* file, VariableArr* all_var)
     else if (node->type == NUMBER) fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - NUMBER (%d) | value - %d\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->type, node->value, ELEM_TREE_COLOR);
     else // Var
     {
-        char name_var = 0;
+        char* name_var = NULL;
         for (int i = 0; i < all_var->size; i++)
         {
             if (all_var->arr[i].num == node->value) { name_var = all_var->arr[i].name; break;}
         }
 
-        fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - VARIABLE (%d) | value - %c (num - %d))\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->type, name_var, node->value, ELEM_TREE_COLOR);
+        fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - VARIABLE (%d) | value - %s (num - %d))\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->type, name_var, node->value, ELEM_TREE_COLOR);
     }
 
 

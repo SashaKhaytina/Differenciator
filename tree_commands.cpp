@@ -14,7 +14,7 @@ Node* create_new_node(TypeNode type, int value, Node* left, Node* right)
 
 
 // in struct Operation add func solve_from
-TypeNode solve_subtree(Node* current_node) // strange type return for this func
+TypeNode solve_subtree(Node* current_node) // strange type return for this func 
 {
     if (current_node->type == OPERATION)
     {

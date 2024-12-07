@@ -55,6 +55,7 @@ int main()
     ForDump st_dump = {};
 
     VariableArr all_var = {};
+    
 
     // tree.root = create_new_node(OPERATION, DIV, 
     //                             create_new_node(OPERATION, ADD, 
@@ -63,12 +64,13 @@ int main()
     //                             create_new_node(NUMBER, 20, NULL, NULL));
 
     get_tree(file, &tree, &all_var);
+    // printf("%s ---------------------\n", all_var.arr[0].name);
 
     // write all_var
-    for (int i = 0; i < all_var.size; i++)
-    {
-        printf("%d: %c - name, %d - num\n", i, all_var.arr[i].name, all_var.arr[i].num);
-    }
+    // for (int i = 0; i < all_var.size; i++)
+    // {
+    //     printf("%d: %c - name, %d - num\n", i, all_var.arr[i].name, all_var.arr[i].num);
+    // }
 
     printf("HE CAN READ\n");
     dump(tree.root, &st_dump, &all_var);
@@ -81,10 +83,10 @@ int main()
     dump(tree.root, &st_dump, &all_var);
     print_tree(tree.root, &all_var);
 
-    // printf("GET DIFF\n");
-    // Tree diff_tree = {};
-    // diff_tree.root = diff(tree.root);
-    // print_tree(diff_tree.root, &all_var);
+    printf("GET DIFF\n");
+    Tree diff_tree = {};
+    diff_tree.root = diff(tree.root);
+    print_tree(diff_tree.root, &all_var);
 }
 
 
@@ -101,6 +103,7 @@ void print_tree(Node* node, VariableArr* all_var)
     if (node == NULL) return;
 
     printf("(");
+    // printf(" %p ", node->left);
     print_tree(node->left, all_var);
 
     
@@ -130,7 +133,7 @@ void print_node(Node* node, VariableArr* all_var)
         for (int i = 0; i < all_var->size; i++) 
         {
             // printf("%c - i var\n", all_var->arr[i].name);
-            if (all_var->arr[i].num == node->value) { printf("%c", all_var->arr[i].name); break; }
+            if (all_var->arr[i].num == node->value) { printf("%s", all_var->arr[i].name); break; }
         }
         // printf("x");
         break;

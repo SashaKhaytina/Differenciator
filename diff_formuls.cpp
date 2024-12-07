@@ -10,7 +10,7 @@ static Node* copy_branch(Node* current_node);
 
 Node* diff_add(Node* current_node)
 {
-    return create_new_node(OPERATION, ADD, diff(current_node->left), diff(current_node->right));
+    return create_new_node(OPERATION, ADD, diff(current_node->left), diff(current_node->right)); // TODO: DSL
 }
 
 
@@ -38,7 +38,7 @@ Node* diff_div(Node* current_node)
                                         create_new_node(OPERATION, MUL, copy_branch(current_node->right), copy_branch(current_node->right)));
 }
 
-
+// TODO: pow, sin, cos, log
 
 
 static Node* copy_branch(Node* current_node)

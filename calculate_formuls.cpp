@@ -1,6 +1,6 @@
 #include "calculate_formuls.h"
 
-
+// TODO: asserts
 
 int calculate_add(Node* node1, Node* node2)
 {

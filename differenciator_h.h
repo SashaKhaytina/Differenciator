@@ -4,6 +4,10 @@
 #include <stdio.h>
 
 
+const char* const FILE_MATH = "math_problem.txt";
+const size_t MAX_NAME_IDENT_SIZE = 200;
+
+
 enum TypeNode
 {
     DEFAULT,
@@ -23,7 +27,6 @@ enum TypeNode
 
 struct ForDump
 {
-    char commands[100][30];
     int dumps_counter;
 };
 
@@ -33,7 +36,7 @@ struct ForDump
 struct Variable
 {
     int num;
-    char name;
+    char name[MAX_NAME_IDENT_SIZE]; // Я тут ИСПРАВЛЯЛЯ
 };
 
 struct VariableArr
@@ -78,8 +81,6 @@ struct Tree
 //                             };
 
 // #include "diff_formuls.h" // is it bad?
-
-const char* const FILE_MATH = "math_problem.txt";
 
 
 #endif
