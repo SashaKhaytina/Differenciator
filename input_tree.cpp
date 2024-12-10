@@ -23,6 +23,37 @@ static size_t size_file(FILE* file)
 }
 
 
+
+void get_tree(FILE* file, Tree* tree, VariableArr* all_var)
+{
+    Token token = {};
+    size_t len_text = size_file(file);
+
+    char arr_file_tree[len_text+1] = {};
+
+    size_t count_symbol = fread(arr_file_tree, sizeof(char), len_text, file);
+    if (count_symbol != len_text) printf("ERROR read file\n");
+
+    init_token(&token, len_text);
+    printf("INIT TOKEN\n");
+
+    get_token(&token, arr_file_tree, all_var);
+    printf("GET TOKEN\n");
+
+    // for (size_t i = 0; i<all_var->size;i++)
+    // {
+    //     printf("%s - %d \n", all_var->arr[i].name, all_var->arr[i].num);
+    // }
+    
+    print_token(&token, all_var);
+    printf("\n");
+
+    tree->root = GetG(&token, all_var);
+}
+
+
+
+
 // static void read_new_node(Node* current_node, int* point_current_letter, char* arr_file_tree, BranchDirection line, VariableArr* all_var)
 // {
 //         *point_current_letter += 1;
@@ -40,38 +71,6 @@ static size_t size_file(FILE* file)
 //             fill_tree(current_node->left, point_current_letter, arr_file_tree, all_var);
 //         }
 // }
-
-
-
-
-void get_tree(FILE* file, Tree* tree, VariableArr* all_var)
-{
-    Token token = {};
-    size_t len_text = size_file(file);
-
-    char arr_file_tree[len_text+1] = {};
-
-    size_t count_symbol = fread(arr_file_tree, sizeof(char), len_text, file);
-
-    init_token(&token, len_text);
-    printf("INIT\n");
-
-    get_token(&token, arr_file_tree, all_var);
-    printf("GET\n");
-
-    // for (size_t i = 0; i<all_var->size;i++)
-    // {
-    //     printf("%s - %d \n", all_var->arr[i].name, all_var->arr[i].num);
-    // }
-    
-    print_token(&token, all_var);
-    printf("\n");
-
-    tree->root = GetG(&token, all_var);
-}
-
-
-
 
 
 

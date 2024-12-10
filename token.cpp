@@ -7,10 +7,13 @@
 #include "math_commands.h"
 
 
+const int NO_THIS_VAR = -1;
+
+
 static void pass_spaces(int* point_current_letter, char* arr_file_tree);
-static void get_word(int* current_symbol, char* arr_file_tree, Node* current_token, VariableArr* all_var);
-static void get_num(int* current_symbol, char* arr_file_tree, Node* current_token);
-static void get_oper(int* current_symbol, char* arr_file_tree, Node* current_token);
+static void get_word   (int* current_symbol, char* arr_file_tree, Node* current_token, VariableArr* all_var);
+static void get_num    (int* current_symbol, char* arr_file_tree, Node* current_token);
+static void get_oper   (int* current_symbol, char* arr_file_tree, Node* current_token);
 
 
 
@@ -61,14 +64,6 @@ void get_token(Token* token, char* arr_file_tree, VariableArr* all_var)
             token->size++;
         }
     }
-
-    // printf("%d - all_var->size",all_var->size);
-
-    // for (int i = 0; i < all_var->size; i++)
-    // {
-    //     printf("%s - %d ----\n", all_var->arr[i].name, all_var->arr[i].num);
-    // }
-
 }
 
 
@@ -88,12 +83,13 @@ static void get_num(int* current_symbol, char* arr_file_tree, Node* current_toke
 
 static void get_word(int* current_symbol, char* arr_file_tree, Node* current_token, VariableArr* all_var)
 {
-    int point_word = *current_symbol; // запомнили где слово начиналось
+    // int point_word = *current_symbol; // запомнили где слово начиналось
     // strncmp - ret 0 when =
     int len_word = 0;
+
     char name[MAX_NAME_IDENT_SIZE] = {};
     
-
+    // Read word
     while ((('A' <= arr_file_tree[*current_symbol]) && (arr_file_tree[*current_symbol] <= 'Z')) || (('a' <= arr_file_tree[*current_symbol]) && (arr_file_tree[*current_symbol] <= 'z')))
     {
         name[len_word] = arr_file_tree[*current_symbol]; // сохраняю имя
@@ -102,6 +98,8 @@ static void get_word(int* current_symbol, char* arr_file_tree, Node* current_tok
     }
 
     // Чтоб лишний раз не копировать имя?..
+
+    // Is it Operation?
     int len_struct_arr = (int) (sizeof(op_arr) / sizeof(Operation));
     for (int i = 0; i < len_struct_arr; i++)
     {
@@ -113,19 +111,16 @@ static void get_word(int* current_symbol, char* arr_file_tree, Node* current_tok
         }
     }
 
+    // It is Variable
     if (current_token->type != OPERATION)
     {
         // add variable
 
-        // printf("%s - NAEMMEMEMEMEM\n", name);
-
         int num_var = find_variable(name, all_var);
-        if  (num_var == -1) num_var = insert_new_variable(name, all_var);
-        // printf("%s - var(2) %d - num\n", all_var->arr[all_var->size - 1].name, all_var->arr[all_var->size - 1].num);
+        if  (num_var == NO_THIS_VAR) num_var = insert_new_variable(name, all_var);
         
         *current_token = {VARIABLE, num_var, NULL, NULL};
 
-        // *current_token = {VARIABLE, val_num, NULL, NULL};
     }
 
 }
@@ -156,15 +151,6 @@ static void get_oper(int* current_symbol, char* arr_file_tree, Node* current_tok
 
 
 
-
-
-
-
-
-
-
-
-
 int find_variable(char* var_name, VariableArr* all_var)
 {
     for (size_t i = 0; i < all_var->size; i++)
@@ -179,18 +165,17 @@ int find_variable(char* var_name, VariableArr* all_var)
         }
     }
 
-    return -1; // const
+    return NO_THIS_VAR; 
 }
 
 
 int insert_new_variable(char* var_name, VariableArr* all_var)
 {
     all_var->size++;
+
     all_var->arr[all_var->size - 1].num = (int)all_var->size;
     strcpy(all_var->arr[all_var->size - 1].name, var_name);
-    // all_var->arr[all_var->size - 1] = {(int)all_var->size, var_name};
-    // num_var = all_var->size; // Говорим, что ЭТОТ номер ее
-    // printf("%s - var\n", all_var->arr[all_var->size - 1].name);
+
     return (int)all_var->size;
 }
 
@@ -199,8 +184,8 @@ void print_token(Token* token, VariableArr* all_var)
 {
     for (size_t i = 0; i < token->size; i++)
     {
-        if (token->array[i].type == NUMBER) printf("%d", token->array[i].value);
-        if (token->array[i].type == VARIABLE) printf("%s", all_var->arr[token->array[i].value - 1].name);
+        if (token->array[i].type == NUMBER)    printf("%d", token->array[i].value);
+        if (token->array[i].type == VARIABLE)  printf("%s", all_var->arr[token->array[i].value - 1].name);
         if (token->array[i].type == OPERATION) printf("%s", op_arr[token->array[i].value].name);
         // printf("TOKEN[%d] (Node) = {%d - type, %d - value}\n", i, token->array[i].type, token->array[i].value);
     }

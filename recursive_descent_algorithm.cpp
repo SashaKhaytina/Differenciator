@@ -7,6 +7,8 @@
 #include "tree_commands.h"
 #include "math_commands.h"
 
+
+
 void print_node_now(Node* cur_node, VariableArr* all_var)
 {
     if (cur_node->type == NUMBER) printf("%d\n", cur_node->value);
@@ -16,25 +18,11 @@ void print_node_now(Node* cur_node, VariableArr* all_var)
 }
 
 
-// const char* const s = "2*(5+2)$";
-
-
-// Node* GetG(char* s);
-// Node* GetN(char* s);
-// Node* GetE(char* s);
-// Node* GetT(char* s);
-// Node* GetP(char* s);
-
-// int main()
-// {
-//     printf("%d -answer\n", GetG());
-// }
 
 Node* GetG(Token* token, VariableArr* all_var)
 {
-    // printf("IN G\n");
     Node* val = GetE(token, all_var);
-    // printf("%d", val);
+
     if (token->array[token->current_ind].value != DOLL) // if node->type not DEFAULT
     {
         printf("ERROR\n");
@@ -50,22 +38,12 @@ Node* GetN(Token* token)
     printf("IN N\n");
     if (token->array[token->current_ind].type == NUMBER) 
     {
-        print_node_now(&token->array[token->current_ind], NULL); 
         token->current_ind++; 
         return &token->array[token->current_ind - 1];
     }
-    printf("ERROR. want num\n");
-    exit(0);
-
-
-    // int val = 0;
-    // while (('0' <= s[p]) && (s[p] <= '9'))
-    // {
-    //     val = val * 10 + s[p] - '0';
-    //     p++;
-    // }
-    // return create_new_node(NUMBER, val, NULL, NULL);
+    printf("ERROR SYNTAX. want num in %d token\n"); // position will be better!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
+
 
 Node* GetE(Token* token, VariableArr* all_var) 
 {
@@ -84,13 +62,7 @@ Node* GetE(Token* token, VariableArr* all_var)
         op_tok->left = val;
         op_tok->right = val2;
         val = op_tok;
-
-        print_node_now(val, all_var);
-        printf("(Node)%p = {%d - type, %d - value, %p - left, %p - right}\n", op_tok, op_tok->type, op_tok->value, op_tok->left, op_tok->right);
-
     }
-
-    printf("(Node)%p = {%d - type, %d - value, %p - left, %p - right}\n", val, val->type, val->value, val->left, val->right);
 
     return val;
 }
@@ -110,7 +82,6 @@ Node* GetT(Token* token, VariableArr* all_var)
 
         Node* val2 = GetP(token, all_var);
         operation = (token->array[token->current_ind].type == OPERATION);
-        // cur_tok = &(token->array[token->current_ind]);
 
         op_tok->left = val;
         op_tok->right = val2;
@@ -133,12 +104,11 @@ Node* GetP(Token* token, VariableArr* all_var)
     {
         token->current_ind++;
         Node* val = GetE(token, all_var);
-        // cur_tok = &(token->array[token->current_ind]);
         
         operation = (token->array[token->current_ind].type == OPERATION);
 
 
-        if (operation && (token->array[token->current_ind].value != CLOSE_SKOB)) {printf("ERROR 2\n"); exit(0);} // TODO: wtf
+        if (operation && (token->array[token->current_ind].value != CLOSE_SKOB)) printf("ERROR SYNTAX. Want ')'\n"); 
         token->current_ind++;
         return val;
     }
@@ -151,49 +121,8 @@ Node* GetV(Token* token, VariableArr* all_var)
 {
     printf("IN V\n");
     if (token->array[token->current_ind].type == VARIABLE) {token->current_ind++; return &token->array[token->current_ind - 1];}
-    printf("ERROR. want var\n");
-    exit(0);
+    printf("ERROR SYNTAX. Want var\n");
     // return NULL; // ????????????????????????????????????
-
-
-
-    // // while (isalpha(s[p]) != 0)
-    // // {
-    // //     val = val * 10 + s[p] - '0';
-    // //     p++;
-    // // }
-
-    // char val = s[p];
-    // int num_var = 0;
-
-    // // TODO: CREATE NEW FUNCTIONS (find_variable, insert_new_variable)
-    // bool know_this_var = false;
-    // for (size_t i = 0; i < all_var->size; i++)
-    // {
-    //     // printf("%c - arr_file_tree[*point_current_letter]\n", arr_file_tree[*point_current_letter]);
-    //     // printf("%c - all_var->arr[i].name\n", all_var->arr[i].name);
-
-    //     if (all_var->arr[i].name == s[p]) 
-    //     { 
-    //         know_this_var = true; 
-    //         num_var = all_var->arr[i].num; 
-    //         printf("FIND!\n"); 
-    //         break;  // 
-    //     }
-    // }
-
-    // // printf("%d - know_this_var\n", know_this_var);
-
-    // if (!know_this_var)
-    // {
-    //     all_var->size++;
-    //     all_var->arr[all_var->size - 1] = {(int)all_var->size, s[p]};
-    //     num_var = all_var->size; // Говорим, что ЭТОТ номер ее
-    // }
-
-    // p++;
-    // return create_new_node(VARIABLE, num_var, NULL, NULL);
-
 }
 
 
