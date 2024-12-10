@@ -45,29 +45,37 @@ int main()
 
     // SOLVE_____________________________________________________________________________________________________________
 
-    solve_subtree(tree.root);
+
+
+    solve(tree.root);
     dump(tree.root, &st_dump, &all_var);
     print_tree(tree.root, &all_var);
     printf("\n");
 
-    trivial_solver(tree.root);
-    dump(tree.root, &st_dump, &all_var);
-    print_tree(tree.root, &all_var);
 
-    solve_subtree(tree.root);
-    trivial_solver(tree.root);
+    // solve_subtree(tree.root);
+    // dump(tree.root, &st_dump, &all_var);
+    // print_tree(tree.root, &all_var);
+    // printf("\n");
 
-    solve_subtree(tree.root);
-    trivial_solver(tree.root);
+    // trivial_solver(tree.root);
+    // dump(tree.root, &st_dump, &all_var);
+    // print_tree(tree.root, &all_var);
 
-    solve_subtree(tree.root);
-    trivial_solver(tree.root);
+    // solve_subtree(tree.root);
+    // trivial_solver(tree.root);
 
-    solve_subtree(tree.root);
-    trivial_solver(tree.root);
+    // solve_subtree(tree.root);
+    // trivial_solver(tree.root);
 
-    solve_subtree(tree.root);
-    trivial_solver(tree.root);
+    // solve_subtree(tree.root);
+    // trivial_solver(tree.root);
+
+    // solve_subtree(tree.root);
+    // trivial_solver(tree.root);
+
+    // solve_subtree(tree.root);
+    // trivial_solver(tree.root);
 
 
 
@@ -82,7 +90,12 @@ int main()
     printf("GET DIFF\n");
     Tree diff_tree = {};
     diff_tree.root = diff(tree.root);
+    
+    solve(diff_tree.root);
+    dump(diff_tree.root, &st_dump, &all_var);
     print_tree(diff_tree.root, &all_var);
+    printf("\n");
+
 }
 
 

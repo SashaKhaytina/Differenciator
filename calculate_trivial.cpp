@@ -21,26 +21,28 @@ static bool is_one(Node* current_node)
 
 
 
-void calculate_triv_add(Node* node)
+void calculate_triv_add(Node* node, int* diference)
 {
     assert(node);
 
 
     if (is_null(node->left)) 
     {
+        (*diference)++;
         *node = {(node->right)->type, (node->right)->value, (node->right)->left, (node->right)->right};
         return;
     }
 
     if (is_null(node->right)) 
     {
+        (*diference)++;
         *node = {(node->left)->type, (node->left)->value, (node->left)->left, (node->left)->right};
         return;
     }
 }
 
 
-void calculate_triv_sub(Node* node)
+void calculate_triv_sub(Node* node, int* diference)
 {
     assert(node);
 
@@ -49,7 +51,7 @@ void calculate_triv_sub(Node* node)
 }
 
 
-void calculate_triv_mul(Node* node)
+void calculate_triv_mul(Node* node, int* diference)
 {
     assert(node);
     printf("IN calculate_triv_mul\n");
@@ -57,33 +59,61 @@ void calculate_triv_mul(Node* node)
 
     if (is_null(node->left) || is_null(node->right)) 
     {
-        printf("AAAAAAAAAAa\n");
+        (*diference)++;
         *node = {NUMBER, 0, NULL, NULL};
         return;
     }
 
     if (is_one(node->left)) 
     {
+        (*diference)++;
         *node = {(node->right)->type, (node->right)->value, (node->right)->left, (node->right)->right};
         return;
     }
 
     if (is_one(node->right)) 
     {
+        (*diference)++;
         *node = {(node->left)->type, (node->left)->value, (node->left)->left, (node->left)->right};
         return;
     }
 }
 
 
-void calculate_triv_div(Node* node)
+void calculate_triv_div(Node* node, int* diference)
 {
     assert(node);
 
 
     if (is_one(node->right)) 
     {
+        (*diference)++;
         *node = {(node->left)->type, (node->left)->value, (node->left)->left, (node->left)->right};
         return;
     }
+}
+
+
+void calculate_triv_sin(Node* node, int* diference)
+{
+
+}
+
+
+void calculate_triv_cos(Node* node, int* diference)
+{
+
+}
+
+
+
+void calculate_triv_log(Node* node, int* diference)
+{
+
+}
+
+
+void calculate_triv_pow(Node* node, int* diference)
+{
+
 }

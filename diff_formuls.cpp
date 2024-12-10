@@ -41,6 +41,46 @@ Node* diff_div(Node* current_node)
 // TODO: pow, sin, cos, log
 
 
+Node* diff_sin(Node* current_node)
+{
+    return create_new_node(OPERATION, MUL, 
+                                        create_new_node(OPERATION, COS, NULL, copy_branch(current_node->right)),
+                                        diff(current_node->right));
+
+}
+
+
+Node* diff_cos(Node* current_node)
+{
+    return create_new_node(OPERATION, MUL, 
+                                        create_new_node(OPERATION, MUL,
+                                                                    create_new_node(NUMBER, -1, NULL, NULL),
+                                                                    create_new_node(OPERATION, SIN, NULL, copy_branch(current_node->right))), 
+                                        diff(current_node->right));
+
+}
+
+
+
+Node* diff_log(Node* current_node)
+{
+    return create_new_node(OPERATION, DIV,
+                                        diff(current_node->right),
+                                        copy_branch(current_node->right));
+
+}
+
+
+
+Node* diff_pow(Node* current_node)
+{
+//     return create_new_node(OPERATION, MUL, 
+//                                         create_new_node()
+
+}
+
+
+
 static Node* copy_branch(Node* current_node)
 {
     if (current_node == NULL) return NULL;

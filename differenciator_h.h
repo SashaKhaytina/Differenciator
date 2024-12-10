@@ -6,8 +6,8 @@
 
 
 const char* const FILE_MATH = "math_problem.txt";
-const size_t MAX_NAME_IDENT_SIZE = 200;
-
+const size_t      MAX_NAME_IDENT_SIZE = 200;
+// const int         NULL_ARG = -1;
 
 enum TypeNode
 {

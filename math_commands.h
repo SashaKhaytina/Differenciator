@@ -10,6 +10,10 @@ enum AllOperations
     SUB,
     MUL,
     DIV,
+    SIN, ///////
+    COS, ///////
+    POW, ///////
+    LOG, ///////
     OPEN_SKOB,
     CLOSE_SKOB, 
     DOLL /////////////////////////////////////////////////////////
@@ -22,7 +26,7 @@ struct Operation
     // void (*to_do_comm)(FILE* file_asm, Asm_SPU* proc, MashineCode com);
     Node* (*diff_form)     (Node* current_node);
     int   (*calculate)     (Node* node1, Node* node2); // for sin - value and NULL // TODO: make int elem_t
-    void  (*triv_calculate)(Node* node);
+    void  (*triv_calculate)(Node* node, int* diference);
 };
 
 #include "diff_formuls.h"
@@ -30,13 +34,18 @@ struct Operation
 #include "calculate_trivial.h"
 
 const Operation op_arr[] = {
-                                {ADD,        "+", diff_add, calculate_add, calculate_triv_add},
-                                {SUB,        "-", diff_sub, calculate_sub, calculate_triv_sub},
-                                {MUL,        "*", diff_mul, calculate_mul, calculate_triv_mul},
-                                {DIV,        "/", diff_div, calculate_div, calculate_triv_div}, 
-                                {OPEN_SKOB,  "(", NULL,     NULL,          NULL},
-                                {CLOSE_SKOB, ")", NULL,     NULL,          NULL},
-                                {DOLL,       "$", NULL,     NULL,          NULL}
+                                {ADD,        "+",   diff_add, calculate_add, calculate_triv_add},
+                                {SUB,        "-",   diff_sub, calculate_sub, calculate_triv_sub},
+                                {MUL,        "*",   diff_mul, calculate_mul, calculate_triv_mul},
+                                {DIV,        "/",   diff_div, calculate_div, calculate_triv_div},
+                                {SIN,        "sin", diff_sin, calculate_sin, calculate_triv_sin},
+                                {COS,        "cos", diff_cos, calculate_cos, calculate_triv_cos},
+                                {POW,        "^",   diff_pow, calculate_pow, calculate_triv_pow},
+                                {LOG,        "log", diff_log, calculate_log, calculate_triv_log},
+
+                                {OPEN_SKOB,  "(",   NULL,     NULL,          NULL},
+                                {CLOSE_SKOB, ")",   NULL,     NULL,          NULL},
+                                {DOLL,       "$",   NULL,     NULL,          NULL}
                             };
 
 #endif

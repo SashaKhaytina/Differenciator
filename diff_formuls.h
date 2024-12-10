@@ -10,6 +10,11 @@ Node* diff_add(Node* current_node);
 Node* diff_sub(Node* current_node);
 Node* diff_mul(Node* current_node);
 Node* diff_div(Node* current_node);
+Node* diff_sin(Node* current_node);
+Node* diff_cos(Node* current_node);
+Node* diff_log(Node* current_node);
+Node* diff_pow(Node* current_node);
+
 
 // const Operation op_arr[] = {
 //                                 {ADD, "+", diff_add},
