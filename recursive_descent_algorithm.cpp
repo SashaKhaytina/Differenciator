@@ -146,7 +146,7 @@ Node* GetF(Token* token, VariableArr* all_var)
 
         Node* val = GetE(token, all_var); // Inside "function"
 
-        if (operation && (token->array[token->current_ind].value != CLOSE_SKOB)) {printf("ERROR SYNTAXfrteeeeeeeeeeeee. Want ')'\n");}
+        if (operation && (token->array[token->current_ind].value != CLOSE_SKOB)) {printf("ERROR SYNTAX. Want ')'\n");}
         token->current_ind++;
 
 

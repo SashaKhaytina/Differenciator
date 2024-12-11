@@ -2,11 +2,13 @@ digraph
 {
 bgcolor="#F2EECB";
 rankdir = TB;
-POINT_0x5c9a8f445490[shape=Mrecord, label = "type - OPERATION(4) | sin", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5c9a8f445598[shape=Mrecord, label = "type - OPERATION(2) | *", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5c9a8f4455b0[shape=Mrecord, label = "type - NUMBER (1) | value - 5", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5c9a8f4455e0[shape=Mrecord, label = "type - VARIABLE (2) | value - x (num - 1))", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5c9a8f445490 -> POINT_0x5c9a8f445598
-POINT_0x5c9a8f445598 -> POINT_0x5c9a8f4455b0
-POINT_0x5c9a8f445598 -> POINT_0x5c9a8f4455e0
+POINT_0x5afa228cb4d8[shape=Mrecord, label = "type - OPERATION(0) | +", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5afa228cb4a8[shape=Mrecord, label = "type - OPERATION(0) | +", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5afa228cb490[shape=Mrecord, label = "type - VARIABLE (2) | value - x (num - 1))", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5afa228cb4c0[shape=Mrecord, label = "type - NUMBER (1) | value - 1", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5afa228cb4f0[shape=Mrecord, label = "type - VARIABLE (2) | value - x (num - 1))", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5afa228cb4d8 -> POINT_0x5afa228cb4a8
+POINT_0x5afa228cb4d8 -> POINT_0x5afa228cb4f0
+POINT_0x5afa228cb4a8 -> POINT_0x5afa228cb490
+POINT_0x5afa228cb4a8 -> POINT_0x5afa228cb4c0
 }

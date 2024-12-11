@@ -88,8 +88,9 @@ int main()
     // DIFF______________________________________________________________________________________________________________
 
     printf("GET DIFF\n");
+    FILE* file_tex = fopen(FILE_TEX, "w");
     Tree diff_tree = {};
-    diff_tree.root = diff(tree.root);
+    diff_tree.root = diff(tree.root, file_tex, &all_var);
     
     solve(diff_tree.root);
     dump(diff_tree.root, &st_dump, &all_var);
