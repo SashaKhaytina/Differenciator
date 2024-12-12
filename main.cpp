@@ -16,6 +16,7 @@ int main()
     FILE* file = fopen(FILE_MATH, "r");
     Tree tree = {};
     ForDump st_dump = {};
+    ForTexDump st_tex_dump = {};
 
     VariableArr all_var = {};
     
@@ -90,6 +91,7 @@ int main()
     printf("GET DIFF\n");
     FILE* file_tex = fopen(FILE_TEX, "w");
     Tree diff_tree = {};
+
     diff_tree.root = diff(tree.root, file_tex, &all_var);
     
     solve(diff_tree.root);

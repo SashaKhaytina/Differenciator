@@ -25,6 +25,12 @@ struct ForDump
 };
 
 
+struct ForTexDump
+{
+    int tex_dumps_counter;
+};
+
+
 struct Variable
 {
     int num;
