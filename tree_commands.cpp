@@ -13,17 +13,20 @@ Node* create_new_node(TypeNode type, int value, Node* left, Node* right)
 }
 
 
-// in struct Operation add func solve_from
-TypeNode solve_subtree(Node* current_node, int* diference) // strange type return for this func 
+TypeNode solve_subtree(Node* current_node, int* diference)
 {
     if (current_node->type == OPERATION)
     {
+
+
         bool is_null = (current_node->left == NULL);
 
-        if ((is_null || (solve_subtree(current_node->left, diference) == NUMBER)) && (solve_subtree(current_node->right, diference) == NUMBER)) // это не пойдет под операцию для 1 числа. Теперь вроде норм
+        bool condition_left  = (is_null || (solve_subtree(current_node->left, diference) == NUMBER));
+        bool condition_right = (solve_subtree(current_node->right, diference) == NUMBER);
+
+        if (condition_left && condition_right)
         {
-            int len_struct_arr = (int) (sizeof(op_arr) / sizeof(Operation));
-            for (int i = 0; i < len_struct_arr; i++)
+            for (int i = 0; i < LEN_STRUCT_OP_ARR; i++)
             {
                 if (op_arr[i].num == current_node->value) { current_node->value = op_arr[i].calculate(current_node->left, current_node->right); break; }
             }
@@ -49,14 +52,11 @@ void trivial_solver(Node* current_node, int* diference)
 
     if (current_node->type == OPERATION)
     {
-        int len_struct_arr = (int) (sizeof(op_arr) / sizeof(Operation));
-        for (int i = 0; i < len_struct_arr; i++)
+        for (int i = 0; i < LEN_STRUCT_OP_ARR; i++)
         {
             if (op_arr[i].num == current_node->value) {op_arr[i].triv_calculate(current_node, diference); break;}
         }
-
     }
-
 }
 
 
@@ -68,7 +68,6 @@ void solve(Node* current_node)
         diference = 0;
         solve_subtree(current_node, &diference);
         trivial_solver(current_node, &diference);
-        // printf("%d - difffffff\n", diference);
     }
 
 }

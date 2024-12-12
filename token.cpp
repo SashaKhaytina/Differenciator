@@ -76,7 +76,6 @@ static void get_num(int* current_symbol, char* arr_file_tree, Node* current_toke
         val_num = val_num * 10 + arr_file_tree[*current_symbol] - '0';
         (*current_symbol)++;
     }
-    // return create_new_node(NUMBER, val_num, NULL, NULL);
     *current_token = {NUMBER, val_num, NULL, NULL};
 }
 
@@ -100,8 +99,7 @@ static void get_word(int* current_symbol, char* arr_file_tree, Node* current_tok
     // Чтоб лишний раз не копировать имя?..
 
     // Is it Operation?
-    int len_struct_arr = (int) (sizeof(op_arr) / sizeof(Operation));
-    for (int i = 0; i < len_struct_arr; i++)
+    for (int i = 0; i < LEN_STRUCT_OP_ARR; i++)
     {
         // if (strncmp(op_arr[i].name, (arr_file_tree + point_word), len_word) == 0) 
         if (strcmp(op_arr[i].name, name) == 0)
@@ -128,14 +126,13 @@ static void get_word(int* current_symbol, char* arr_file_tree, Node* current_tok
 
 static void get_oper(int* current_symbol, char* arr_file_tree, Node* current_token)
 {
+    printf("tyttytyty\n");
     char op[2] = {}; // ???????????????????????????
     op[0] = arr_file_tree[*current_symbol];
     (*current_symbol)++;
 
-    int len_struct_arr = (int) (sizeof(op_arr) / sizeof(Operation));
-    for (int i = 0; i < len_struct_arr; i++)
+    for (int i = 0; i < LEN_STRUCT_OP_ARR; i++)
     {
-        // if (strncmp(op_arr[i].name, (arr_file_tree + point_word), len_word) == 0) 
         if (strcmp(op_arr[i].name, op) == 0)
         {
             *current_token = {OPERATION, op_arr[i].num, NULL, NULL};
@@ -143,9 +140,7 @@ static void get_oper(int* current_symbol, char* arr_file_tree, Node* current_tok
             break; 
         }
     }
-    // return create_new_node(NUMBER, val_num, NULL, NULL);
     if (current_token->type == DEFAULT) printf("SYNTAX ERROR\n");
-    // *current_token = {NUMBER, val_num, NULL, NULL};
 }
 
 
@@ -155,9 +150,6 @@ int find_variable(char* var_name, VariableArr* all_var)
 {
     for (size_t i = 0; i < all_var->size; i++)
     {
-        // printf("%c - arr_file_tree[*point_current_letter]\n", arr_file_tree[*point_current_letter]);
-        // printf("%s - all_var->arr[i].name\n", all_var->arr[i].name);
-
         if (strcmp(all_var->arr[i].name, var_name) == 0) 
         { 
             printf("FIND!");
@@ -187,6 +179,5 @@ void print_token(Token* token, VariableArr* all_var)
         if (token->array[i].type == NUMBER)    printf("%d", token->array[i].value);
         if (token->array[i].type == VARIABLE)  printf("%s", all_var->arr[token->array[i].value - 1].name);
         if (token->array[i].type == OPERATION) printf("%s", op_arr[token->array[i].value].name);
-        // printf("TOKEN[%d] (Node) = {%d - type, %d - value}\n", i, token->array[i].type, token->array[i].value);
     }
 }

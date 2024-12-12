@@ -10,10 +10,10 @@ enum AllOperations
     SUB,
     MUL,
     DIV,
-    SIN, ///////
-    COS, ///////
+    SIN,
+    COS,
     POW, ///////
-    LOG, ///////
+    LOG,
     OPEN_SKOB,
     CLOSE_SKOB, 
     DOLL /////////////////////////////////////////////////////////
@@ -22,9 +22,8 @@ enum AllOperations
 struct Operation
 {
     AllOperations num;
-    char name[10]; // mabye for sin, sqrt ...
-    // void (*to_do_comm)(FILE* file_asm, Asm_SPU* proc, MashineCode com);
-    Node* (*diff_form)     (Node* current_node, FILE* file, VariableArr* all_var);//, FILE* file, VariableArr* all_var);
+    char name[10];
+    Node* (*diff_form)     (Node* current_node, FILE* file, VariableArr* all_var);
     int   (*calculate)     (Node* node1, Node* node2); // for sin - value and NULL // TODO: make int elem_t
     void  (*triv_calculate)(Node* node, int* diference);
 };
@@ -47,5 +46,7 @@ const Operation op_arr[] = {
                                 {CLOSE_SKOB, ")",   NULL,     NULL,          NULL},
                                 {DOLL,       "$",   NULL,     NULL,          NULL}
                             };
+
+const int LEN_STRUCT_OP_ARR = (int) (sizeof(op_arr) / sizeof(Operation));
 
 #endif

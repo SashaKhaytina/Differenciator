@@ -16,6 +16,7 @@
 #define _SUB(left, right) create_new_node(OPERATION, SUB, left, right)
 #define _MUL(left, right) create_new_node(OPERATION, MUL, left, right)
 #define _DIV(left, right) create_new_node(OPERATION, DIV, left, right)
+#define _POW(left, right) create_new_node(OPERATION, POW, left, right)
 #define _SIN(arg)         create_new_node(OPERATION, SIN, NULL, arg)
 #define _COS(arg)         create_new_node(OPERATION, COS, NULL, arg)
 #define _LOG(arg)         create_new_node(OPERATION, ADD, NULL, arg)
@@ -39,11 +40,5 @@ Node* diff_log(Node* current_node, FILE* file, VariableArr* all_var);
 Node* diff_pow(Node* current_node, FILE* file, VariableArr* all_var);
 
 
-// const Operation op_arr[] = {
-//                                 {ADD, "+", diff_add},
-//                                 {SUB, "-", diff_sub},
-//                                 {MUL, "*", diff_mul},
-//                                 {DIV, "/", diff_div}
-//                             };
 
 #endif

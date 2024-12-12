@@ -54,32 +54,6 @@ int main()
     printf("\n");
 
 
-    // solve_subtree(tree.root);
-    // dump(tree.root, &st_dump, &all_var);
-    // print_tree(tree.root, &all_var);
-    // printf("\n");
-
-    // trivial_solver(tree.root);
-    // dump(tree.root, &st_dump, &all_var);
-    // print_tree(tree.root, &all_var);
-
-    // solve_subtree(tree.root);
-    // trivial_solver(tree.root);
-
-    // solve_subtree(tree.root);
-    // trivial_solver(tree.root);
-
-    // solve_subtree(tree.root);
-    // trivial_solver(tree.root);
-
-    // solve_subtree(tree.root);
-    // trivial_solver(tree.root);
-
-    // solve_subtree(tree.root);
-    // trivial_solver(tree.root);
-
-
-
 
     printf("\n\n\n\n");
     print_tree(tree.root, &all_var);
@@ -146,8 +120,7 @@ void print_node(Node* node, VariableArr* all_var)
 
     case OPERATION:
     {
-        int len_struct_arr = (int) (sizeof(op_arr) / sizeof(Operation));
-        for (int i = 0; i < len_struct_arr; i++)
+        for (int i = 0; i < LEN_STRUCT_OP_ARR; i++)
         {
             if (op_arr[i].num == node->value) { printf("%s", op_arr[i].name); break; }
         }

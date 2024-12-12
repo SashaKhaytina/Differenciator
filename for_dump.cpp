@@ -21,8 +21,7 @@ static void graph_create_point(Node* node, FILE* file, VariableArr* all_var)
 
     if (node->type == OPERATION)
     {
-        int len_struct_arr = (int) (sizeof(op_arr) / sizeof(Operation));
-        for (int i = 0; i < len_struct_arr; i++)
+        for (int i = 0; i < LEN_STRUCT_OP_ARR; i++)
         {
             if (op_arr[i].num == node->value) { fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - OPERATION(%d) | %s\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->value, op_arr[i].name, ELEM_TREE_COLOR); break; }
         }

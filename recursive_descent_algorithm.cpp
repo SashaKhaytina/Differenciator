@@ -22,6 +22,10 @@ void print_node_now(Node* cur_node, VariableArr* all_var)
 
 Node* GetG(Token* token, VariableArr* all_var)
 {
+    assert(token);
+    assert(all_var);
+
+
     Node* val = GetE(token, all_var);
 
     if (token->array[token->current_ind].value != DOLL) // if node->type not DEFAULT
@@ -36,18 +40,26 @@ Node* GetG(Token* token, VariableArr* all_var)
 
 Node* GetN(Token* token) 
 {
+    assert(token);
+
+
     printf("IN N\n");
     if (token->array[token->current_ind].type == NUMBER) 
     {
         token->current_ind++; 
         return &token->array[token->current_ind - 1];
     }
-    printf("ERROR SYNTAX. want num in %d token\n"); // position will be better!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    printf("ERROR SYNTAX. want num in %d token\n", token->current_ind); // position will be better!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    return NULL;
 }
 
 
 Node* GetE(Token* token, VariableArr* all_var) 
 {
+    assert(token);
+    assert(all_var);
+
+
     printf("IN E\n");
     Node* val = GetT(token, all_var);
 
@@ -71,7 +83,12 @@ Node* GetE(Token* token, VariableArr* all_var)
 
 Node* GetT(Token* token, VariableArr* all_var) 
 {
+    assert(token);
+    assert(all_var);
+
+
     printf("IN T\n");
+
     Node* val = GetP(token, all_var);
 
     bool operation = (token->array[token->current_ind].type == OPERATION);
@@ -94,11 +111,89 @@ Node* GetT(Token* token, VariableArr* all_var)
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+// Node* GetPow(Token* token, VariableArr* all_var) 
+// {
+//     assert(token);
+//     assert(all_var);
+
+
+//     printf("IN TPow\n");
+    
+//     Node* val = GetP(token, all_var);
+
+//     bool operation = (token->array[token->current_ind].type == OPERATION);
+//     while (operation && ((token->array[token->current_ind].value == MUL) || (token->array[token->current_ind].value == DIV)))
+//     {
+//         Node* op_tok = &token->array[token->current_ind];
+
+//         token->current_ind++;
+
+//         Node* val2 = GetP(token, all_var);
+//         operation = (token->array[token->current_ind].type == OPERATION);
+
+//         op_tok->left = val;
+//         op_tok->right = val2;
+//         val = op_tok;
+
+//     }
+
+//     return val;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Node* GetP(Token* token, VariableArr* all_var) 
 {
-    printf("IN P\n");
+    assert(token);
+    assert(all_var);
 
-    // Node* cur_tok = &(token->array[token->current_ind]);
+
+    printf("IN P\n");
 
     bool operation = (token->array[token->current_ind].type == OPERATION);
     if (operation)
@@ -109,12 +204,53 @@ Node* GetP(Token* token, VariableArr* all_var)
             Node* val = GetE(token, all_var);
             
             operation = (token->array[token->current_ind].type == OPERATION);
-
-
             if (operation && (token->array[token->current_ind].value != CLOSE_SKOB)) printf("ERROR SYNTAX. Want ')'\n"); 
 
             token->current_ind++;
+            //________________________________IS POW?_________________________________________
+            // return val;
+
+
+
+
+
+            operation = (token->array[token->current_ind].type == OPERATION);
+            if (operation && (token->array[token->current_ind].value == POW))
+            {
+                Node* op_tok = &token->array[token->current_ind];
+                token->current_ind++;
+
+                // operation = (token->array[token->current_ind].type == OPERATION);
+                // if (operation && (token->array[token->current_ind].value != OPEN_SKOB)) printf("ERROR SYNTAX. Want '('\n"); 
+                // token->current_ind++;
+                // Node* val2 =  GetE(token, all_var);
+
+                // operation = (token->array[token->current_ind].type == OPERATION);
+                // if (operation && (token->array[token->current_ind].value != CLOSE_SKOB)) printf("ERROR SYNTAX. Want ')'\n"); 
+                // token->current_ind++;
+                Node* val2 =  GetN(token); // вместо верхнего
+
+                op_tok->left  = val;
+                op_tok->right = val2;
+
+                return op_tok;
+            }
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
             return val;
+
         }
         else
         {
@@ -130,6 +266,10 @@ Node* GetP(Token* token, VariableArr* all_var)
 
 Node* GetF(Token* token, VariableArr* all_var) 
 {
+    assert(token);
+    assert(all_var);
+
+
     printf("IN F\n");
 
 
@@ -150,7 +290,7 @@ Node* GetF(Token* token, VariableArr* all_var)
         token->current_ind++;
 
 
-        op_tok->left = NULL; // ??????????????????????????????????????????????????????????
+        op_tok->left = NULL; 
         op_tok->right = val;
 
         return op_tok;
@@ -164,10 +304,14 @@ Node* GetF(Token* token, VariableArr* all_var)
 
 Node* GetV(Token* token, VariableArr* all_var) 
 {
+    assert(token);
+    assert(all_var);
+
+
     printf("IN V\n");
     if (token->array[token->current_ind].type == VARIABLE) {token->current_ind++; return &token->array[token->current_ind - 1];}
     printf("ERROR SYNTAX. Want var\n");
-    // return NULL; // ????????????????????????????????????
+    return NULL; 
 }
 
 

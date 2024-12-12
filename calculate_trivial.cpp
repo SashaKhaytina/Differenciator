@@ -96,24 +96,29 @@ void calculate_triv_div(Node* node, int* diference)
 
 void calculate_triv_sin(Node* node, int* diference)
 {
-
+    return;
 }
 
 
 void calculate_triv_cos(Node* node, int* diference)
 {
-
+    return;
 }
 
 
 
 void calculate_triv_log(Node* node, int* diference)
 {
-
+    return;
 }
 
 
 void calculate_triv_pow(Node* node, int* diference)
 {
-
+    if (is_null(node->left)) 
+    {
+        (*diference)++;
+        *node = {NUMBER, 1, NULL, NULL};
+        return;
+    }
 }
