@@ -99,6 +99,8 @@ int main()
     print_tree(diff_tree.root, &all_var);
     printf("\n");
 
+    dump(diff_tree.root, &st_dump, &all_var);
+
 }
 
 
