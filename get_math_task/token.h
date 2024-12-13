@@ -1,7 +1,7 @@
 #ifndef TOKEN
 #define TOKEN
 
-#include "differenciator_h.h"
+#include "../differenciator_h.h"
 
 struct Token
 {

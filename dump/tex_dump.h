@@ -1,7 +1,7 @@
 #ifndef TEX_DUMP
 #define TEX_DUMP
 
-#include "differenciator_h.h"
+#include "../differenciator_h.h"
 
 // void tex_dump(Node* node, Node* node_diff, FILE* tex_file, VariableArr* all_var);
 void fprint_tree(FILE* file, Node* node, VariableArr* all_var);

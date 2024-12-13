@@ -4,8 +4,8 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-#include "tree_commands.h"
-#include "math_commands.h"
+#include "../tree_s__commands/tree_commands.h"
+#include "../math/math_commands.h"
 
 
 

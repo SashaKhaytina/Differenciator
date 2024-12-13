@@ -1,7 +1,7 @@
 #ifndef MATH
 #define MATH
 
-#include "differenciator_h.h"
+#include "../differenciator_h.h"
 
 
 // enum AllOperations

@@ -1,6 +1,6 @@
 #include "tex_dump.h"
 
-#include "math_commands.h"
+#include "../math/math_commands.h"
 
 
 

@@ -1,1 +1,1 @@
-g++ main.cpp for_dump.cpp tree_commands.cpp input_tree.cpp differentiation.cpp diff_formuls.cpp calculate_formuls.cpp recursive_descent_algorithm.cpp token.cpp calculate_trivial.cpp tex_dump.cpp -o differenciator
+g++ main.cpp dump/for_dump.cpp tree_s__commands/tree_commands.cpp get_math_task/input_tree.cpp math/differentiation.cpp math/diff_formuls.cpp math/calculate_formuls.cpp get_math_task/recursive_descent_algorithm.cpp get_math_task/token.cpp math/calculate_trivial.cpp dump/tex_dump.cpp -o differenciator

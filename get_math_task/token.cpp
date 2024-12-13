@@ -4,7 +4,7 @@
 #include <ctype.h>
 #include <string.h>
 
-#include "math_commands.h"
+#include "../math/math_commands.h"
 
 
 const int NO_THIS_VAR = -1;

@@ -1,7 +1,7 @@
 #ifndef REC_DES_ALG
 #define REC_DES_ALG
 
-#include "differenciator_h.h"
+#include "../differenciator_h.h"
 #include "token.h"
 
 enum Status

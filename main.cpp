@@ -1,9 +1,9 @@
 #include "differenciator_h.h" 
-#include "math_commands.h"
-#include "for_dump.h"
-#include "tree_commands.h"
-#include "input_tree.h"
-#include "differentiation.h"
+#include "math/math_commands.h"
+#include "dump/for_dump.h"
+#include "tree_s__commands/tree_commands.h"
+#include "get_math_task/input_tree.h"
+#include "math/differentiation.h"
 
 
 
@@ -19,15 +19,6 @@ int main()
     ForTexDump st_tex_dump = {};
 
     VariableArr all_var = {};
-    
-
-    // tree.root = create_new_node(OPERATION, DIV, 
-    //                             create_new_node(OPERATION, ADD, 
-    //                                             create_new_node(VARIABLE, 1, NULL, NULL),
-    //                                             create_new_node(NUMBER, 6, NULL, NULL)),
-    //                             create_new_node(NUMBER, 20, NULL, NULL));
-
-
 
 
     get_tree(file, &tree, &all_var);
@@ -110,7 +101,6 @@ void print_node(Node* node, VariableArr* all_var)
 
     case VARIABLE:
     {
-        // Is there a need check here?
         for (int i = 0; i < all_var->size; i++) 
         {
             if (all_var->arr[i].num == node->value.var_num) { printf("%s", all_var->arr[i].name); break; }

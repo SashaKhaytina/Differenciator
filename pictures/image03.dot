@@ -1,6 +1,0 @@
-digraph
-{
-bgcolor="#F2EECB";
-rankdir = TB;
-POINT_0x628a207a1ee0[shape=Mrecord, label = "type - NUMBER (1) | value - 0", style="filled",fillcolor="#D7CF8D"]
-}

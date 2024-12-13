@@ -8,7 +8,7 @@
 typedef double Elem_t;
 
 const char* const FILE_MATH = "math_problem.txt";
-const char* const FILE_TEX  = "tex_files/tex.tex";
+const char* const FILE_TEX  = "all_dumps/tex_files/tex.tex";
 const size_t      MAX_NAME_IDENT_SIZE = 200;
 // const int         NULL_ARG = -1;
 
@@ -80,10 +80,7 @@ union Value
 struct Node
 {
     TypeNode type;
-    // union 
     Value value;
-
-    //   value; // само число или номер переменной или номер операции 
     Node*    left;
     Node*    right;
 };

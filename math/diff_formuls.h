@@ -4,7 +4,7 @@
 #ifndef DIFF_FORMULS
 #define DIFF_FORMULS
 
-#include "differenciator_h.h" 
+#include "../differenciator_h.h" 
 
 
 #define _LEFT  current_node->left

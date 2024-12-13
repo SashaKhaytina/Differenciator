@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <malloc.h>
 
-#include "math_commands.h"
+#include "../math/math_commands.h"
 
 Node* create_new_node(TypeNode type, Elem_t num , Node* left, Node* right)
 {

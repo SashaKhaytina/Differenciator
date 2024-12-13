@@ -1,7 +1,7 @@
 #ifndef TREE_COMMANDS
 #define TREE_COMMANDS
 
-#include "differenciator_h.h"
+#include "../differenciator_h.h"
 
 Node* create_new_node(TypeNode type, Elem_t num, Node* left, Node* right);
 

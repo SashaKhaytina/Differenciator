@@ -1,9 +1,10 @@
 #include "diff_formuls.h"
+
+#include "differentiation.h"
 #include "math_commands.h"
 
-#include "tree_commands.h"
-#include "differentiation.h" // it is bad...
-#include "tex_dump.h"
+#include "../tree_s__commands/tree_commands.h"
+#include "../dump/tex_dump.h"
 
 
 static Node* copy_branch(Node* current_node);

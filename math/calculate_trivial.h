@@ -1,7 +1,7 @@
 #ifndef CALCULATE_TRIVIAL
 #define CALCULATE_TRIVIAL
 
-#include "differenciator_h.h"
+#include "../differenciator_h.h"
 
 // Or real numbers in this func (Или просто для чисел, а не для Node)
 

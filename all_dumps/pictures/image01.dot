@@ -1,0 +1,34 @@
+digraph
+{
+bgcolor="#F2EECB";
+rankdir = TB;
+POINT_0x636c9d3b0610[shape=Mrecord, label = "type - OPERATION(0) | +", style="filled",fillcolor="#D7CF8D"]
+POINT_0x636c9d3b0510[shape=Mrecord, label = "type - OPERATION(1) | -", style="filled",fillcolor="#D7CF8D"]
+POINT_0x636c9d3b0490[shape=Mrecord, label = "type - OPERATION(4) | sin", style="filled",fillcolor="#D7CF8D"]
+POINT_0x636c9d3b04d0[shape=Mrecord, label = "type - NUMBER (1) | value - 3", style="filled",fillcolor="#D7CF8D"]
+POINT_0x636c9d3b0550[shape=Mrecord, label = "type - OPERATION(2) | *", style="filled",fillcolor="#D7CF8D"]
+POINT_0x636c9d3b0530[shape=Mrecord, label = "type - NUMBER (1) | value - 9", style="filled",fillcolor="#D7CF8D"]
+POINT_0x636c9d3b05d0[shape=Mrecord, label = "type - OPERATION(6) | ^", style="filled",fillcolor="#D7CF8D"]
+POINT_0x636c9d3b0590[shape=Mrecord, label = "type - NUMBER (1) | value - 2", style="filled",fillcolor="#D7CF8D"]
+POINT_0x636c9d3b05f0[shape=Mrecord, label = "type - NUMBER (1) | value - 2", style="filled",fillcolor="#D7CF8D"]
+POINT_0x636c9d3b06f0[shape=Mrecord, label = "type - OPERATION(3) | /", style="filled",fillcolor="#D7CF8D"]
+POINT_0x636c9d3b06b0[shape=Mrecord, label = "type - OPERATION(2) | *", style="filled",fillcolor="#D7CF8D"]
+POINT_0x636c9d3b0630[shape=Mrecord, label = "type - OPERATION(7) | log", style="filled",fillcolor="#D7CF8D"]
+POINT_0x636c9d3b0670[shape=Mrecord, label = "type - NUMBER (1) | value - 5", style="filled",fillcolor="#D7CF8D"]
+POINT_0x636c9d3b06d0[shape=Mrecord, label = "type - NUMBER (1) | value - 3", style="filled",fillcolor="#D7CF8D"]
+POINT_0x636c9d3b0710[shape=Mrecord, label = "type - NUMBER (1) | value - 5", style="filled",fillcolor="#D7CF8D"]
+POINT_0x636c9d3b0610 -> POINT_0x636c9d3b0510
+POINT_0x636c9d3b0610 -> POINT_0x636c9d3b06f0
+POINT_0x636c9d3b0510 -> POINT_0x636c9d3b0490
+POINT_0x636c9d3b0510 -> POINT_0x636c9d3b0550
+POINT_0x636c9d3b0490 -> POINT_0x636c9d3b04d0
+POINT_0x636c9d3b0550 -> POINT_0x636c9d3b0530
+POINT_0x636c9d3b0550 -> POINT_0x636c9d3b05d0
+POINT_0x636c9d3b05d0 -> POINT_0x636c9d3b0590
+POINT_0x636c9d3b05d0 -> POINT_0x636c9d3b05f0
+POINT_0x636c9d3b06f0 -> POINT_0x636c9d3b06b0
+POINT_0x636c9d3b06f0 -> POINT_0x636c9d3b0710
+POINT_0x636c9d3b06b0 -> POINT_0x636c9d3b0630
+POINT_0x636c9d3b06b0 -> POINT_0x636c9d3b06d0
+POINT_0x636c9d3b0630 -> POINT_0x636c9d3b0670
+}

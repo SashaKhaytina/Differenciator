@@ -1,12 +1,14 @@
 #include "input_tree.h"
-#include "math_commands.h"
+
+#include "recursive_descent_algorithm.h"
+#include "token.h"
 
 #include <ctype.h>
 #include <stdlib.h>
 #include <string.h>
-#include "tree_commands.h"
-#include "recursive_descent_algorithm.h"
-#include "token.h"
+
+#include "../math/math_commands.h"
+#include "../tree_s__commands/tree_commands.h"
 
 static void read_new_node(Node* current_node, int* point_current_letter, char* arr_file_tree, BranchDirection line, VariableArr* all_var);
 static size_t size_file(FILE* file);

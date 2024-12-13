@@ -1,7 +1,7 @@
 #ifndef INPUT_TREE
 #define INPUT_TREE
 
-#include "differenciator_h.h" 
+#include "../differenciator_h.h" 
 #include <stdio.h>
 
 enum BranchDirection

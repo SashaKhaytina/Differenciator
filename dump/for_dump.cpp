@@ -1,6 +1,6 @@
 #include "for_dump.h"
 
-#include "math_commands.h"
+#include "../math/math_commands.h"
 
 #include <stdio.h>
 
@@ -23,10 +23,10 @@ static void graph_create_point(Node* node, FILE* file, VariableArr* all_var)
     {
         for (int i = 0; i < LEN_STRUCT_OP_ARR; i++)
         {
-            if (op_arr[i].num == node->value.op_num) { fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - OPERATION(%d) | %s\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->value, op_arr[i].name, ELEM_TREE_COLOR); break; }
+            if (op_arr[i].num == node->value.op_num) { fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - OPERATION(%d) | %s\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->value.op_num, op_arr[i].name, ELEM_TREE_COLOR); break; }
         }
     }
-    else if (node->type == NUMBER) fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - NUMBER (%d) | value - %d\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->type, node->value, ELEM_TREE_COLOR);
+    else if (node->type == NUMBER) fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - NUMBER (%d) | value - %g\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->type, node->value.num, ELEM_TREE_COLOR);
     else // Var
     {
         char* name_var = NULL;
@@ -63,7 +63,7 @@ static void graph_create_edge(Node* node, FILE* file)
 static void create_png(int num)
 {
     char command_create_png[200] = {};
-    sprintf(command_create_png, "dot pictures/image%d%d.dot -Tpng -o pictures/pic%d%d.png", num / 10, num % 10, num / 10, num % 10);
+    sprintf(command_create_png, "dot all_dumps/pictures/image%d%d.dot -Tpng -o all_dumps/pictures/pic%d%d.png", num / 10, num % 10, num / 10, num % 10);
     system(command_create_png);
 }
 
@@ -75,9 +75,9 @@ void dump(Node* node, ForDump* st_dump, VariableArr* all_var) // рисует п
     st_dump->dumps_counter++;
     int number_of_dump = st_dump->dumps_counter;
 
-    char sample[] = "pictures/image00.dot";
-    sample[14] = (char) ('0' + ((int) number_of_dump / 10));
-    sample[15] = (char) ('0' + ((int) number_of_dump % 10));
+    char sample[] = "all_dumps/pictures/image00.dot";
+    sample[24] = (char) ('0' + ((int) number_of_dump / 10));
+    sample[25] = (char) ('0' + ((int) number_of_dump % 10));
 
     FILE* file = fopen(sample, "w");
 
@@ -106,9 +106,9 @@ void to_do_log_file(ForDump* st_dump)
 
     for (int i = 1; i <= st_dump->dumps_counter; i++)
     {        
-        char sample[] = "pic00.png";
-        sample[3] = (char) ('0' + ((int) i / 10));
-        sample[4] = (char) ('0' + ((int) i % 10));
+        char sample[] = "all_dumps/pictures/pic00.png";
+        sample[23] = (char) ('0' + ((int) i / 10));
+        sample[24] = (char) ('0' + ((int) i % 10));
 
         fprintf(file, "<big><big><div align=\"center\">Tree (print %d) &#128578;</div></big></big>\n\n", i); 
 
