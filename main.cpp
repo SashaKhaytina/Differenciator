@@ -104,7 +104,7 @@ void print_node(Node* node, VariableArr* all_var)
     {
     case NUMBER:
     {
-        printf("%d", node->value);
+        printf("%g", node->value.num);
         break;
     }
 
@@ -113,7 +113,7 @@ void print_node(Node* node, VariableArr* all_var)
         // Is there a need check here?
         for (int i = 0; i < all_var->size; i++) 
         {
-            if (all_var->arr[i].num == node->value) { printf("%s", all_var->arr[i].name); break; }
+            if (all_var->arr[i].num == node->value.var_num) { printf("%s", all_var->arr[i].name); break; }
         }
         break;
     }
@@ -122,7 +122,7 @@ void print_node(Node* node, VariableArr* all_var)
     {
         for (int i = 0; i < LEN_STRUCT_OP_ARR; i++)
         {
-            if (op_arr[i].num == node->value) { printf("%s", op_arr[i].name); break; }
+            if (op_arr[i].num == node->value.op_num) { printf("%s", op_arr[i].name); break; }
         }
         break;
     }

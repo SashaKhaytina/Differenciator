@@ -70,13 +70,17 @@ void get_token(Token* token, char* arr_file_tree, VariableArr* all_var)
 
 static void get_num(int* current_symbol, char* arr_file_tree, Node* current_token)
 {
-    int val_num = 0;
+    Elem_t val_num = 0;
     while (('0' <= arr_file_tree[*current_symbol]) && (arr_file_tree[*current_symbol] <= '9'))
     {
         val_num = val_num * 10 + arr_file_tree[*current_symbol] - '0';
         (*current_symbol)++;
     }
-    *current_token = {NUMBER, val_num, NULL, NULL};
+    // *current_token = {NUMBER, val_num, NULL, NULL};
+    current_token->type      = NUMBER;
+    current_token->value.num = val_num;
+    current_token->left      = NULL;
+    current_token->right     = NULL;
 }
 
 
@@ -104,7 +108,12 @@ static void get_word(int* current_symbol, char* arr_file_tree, Node* current_tok
         // if (strncmp(op_arr[i].name, (arr_file_tree + point_word), len_word) == 0) 
         if (strcmp(op_arr[i].name, name) == 0)
         {
-            *current_token = {OPERATION, op_arr[i].num, NULL, NULL};
+            // *current_token = {OPERATION, op_arr[i].num, NULL, NULL};
+            current_token->type         = OPERATION;
+            current_token->value.op_num = op_arr[i].num;
+            current_token->left         = NULL;
+            current_token->right        = NULL;
+
             break; 
         }
     }
@@ -117,7 +126,11 @@ static void get_word(int* current_symbol, char* arr_file_tree, Node* current_tok
         int num_var = find_variable(name, all_var);
         if  (num_var == NO_THIS_VAR) num_var = insert_new_variable(name, all_var);
         
-        *current_token = {VARIABLE, num_var, NULL, NULL};
+        // *current_token = {VARIABLE, num_var, NULL, NULL};
+        current_token->type          = VARIABLE;
+        current_token->value.var_num = num_var;
+        current_token->left          = NULL;
+        current_token->right         = NULL;
 
     }
 
@@ -126,8 +139,7 @@ static void get_word(int* current_symbol, char* arr_file_tree, Node* current_tok
 
 static void get_oper(int* current_symbol, char* arr_file_tree, Node* current_token)
 {
-    printf("tyttytyty\n");
-    char op[2] = {}; // ???????????????????????????
+    char op[2] = {}; // ???
     op[0] = arr_file_tree[*current_symbol];
     (*current_symbol)++;
 
@@ -135,7 +147,11 @@ static void get_oper(int* current_symbol, char* arr_file_tree, Node* current_tok
     {
         if (strcmp(op_arr[i].name, op) == 0)
         {
-            *current_token = {OPERATION, op_arr[i].num, NULL, NULL};
+            // *current_token = {OPERATION, op_arr[i].num, NULL, NULL};
+            current_token->type         = OPERATION;
+            current_token->value.op_num = op_arr[i].num;
+            current_token->left         = NULL;
+            current_token->right        = NULL;
 
             break; 
         }
@@ -176,8 +192,8 @@ void print_token(Token* token, VariableArr* all_var)
 {
     for (size_t i = 0; i < token->size; i++)
     {
-        if (token->array[i].type == NUMBER)    printf("%d", token->array[i].value);
-        if (token->array[i].type == VARIABLE)  printf("%s", all_var->arr[token->array[i].value - 1].name);
-        if (token->array[i].type == OPERATION) printf("%s", op_arr[token->array[i].value].name);
+        if (token->array[i].type == NUMBER)    printf("%d", token->array[i].value.num);
+        if (token->array[i].type == VARIABLE)  printf("%s", all_var->arr[token->array[i].value.var_num - 1].name);
+        if (token->array[i].type == OPERATION) printf("%s", op_arr[token->array[i].value.op_num].name);
     }
 }

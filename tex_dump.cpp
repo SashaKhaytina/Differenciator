@@ -11,7 +11,7 @@ void fprint_node(FILE* file, Node* node, VariableArr* all_var)
     {
     case NUMBER:
     {
-        fprintf(file, "%d", node->value);
+        fprintf(file, "%g", node->value.num);
         break;
     }
 
@@ -19,19 +19,19 @@ void fprint_node(FILE* file, Node* node, VariableArr* all_var)
     {
         for (int i = 0; i < all_var->size; i++) 
         {
-            if (all_var->arr[i].num == node->value) { fprintf(file, "%s", all_var->arr[i].name); break; }
+            if (all_var->arr[i].num == node->value.var_num) { fprintf(file, "%s", all_var->arr[i].name); break; }
         }
         break;
     }
 
     case OPERATION:
     {
-        if (node->value == MUL) fprintf(file, " \\cdot ");
+        if (node->value.op_num == MUL) fprintf(file, " \\cdot ");
         else
         {
             for (int i = 0; i < LEN_STRUCT_OP_ARR; i++)
             {
-                if (op_arr[i].num == node->value) { fprintf(file, "%s", op_arr[i].name); break; }
+                if (op_arr[i].num == node->value.op_num) { fprintf(file, "%s", op_arr[i].name); break; }
             }
         }
         break;
@@ -55,7 +55,7 @@ void fprint_tree(FILE* file, Node* node, VariableArr* all_var)
     if (node->type != OPERATION) fprint_node(file, node, all_var);
     else
     {
-        if (node->value == DIV)
+        if (node->value.op_num == DIV)
         {
             fprintf(file,"\\frac{");
             fprint_tree(file, node->left, all_var);
@@ -65,8 +65,8 @@ void fprint_tree(FILE* file, Node* node, VariableArr* all_var)
         }
         else
         {
-            bool is_lower_op =  (node->value == ADD || node->value == SUB);
-            bool is_pow =  (node->value == POW);
+            bool is_lower_op =  (node->value.op_num == ADD || node->value.op_num == SUB);
+            bool is_pow =  (node->value.op_num == POW);
             if (is_lower_op || is_pow) fprintf(file,"(");
 
 
@@ -77,7 +77,7 @@ void fprint_tree(FILE* file, Node* node, VariableArr* all_var)
             fprint_node(file, node, all_var);
 
 
-            bool is_func =  (node->value == SIN || node->value == COS || node->value == LOG);
+            bool is_func =  (node->value.op_num == SIN || node->value.op_num == COS || node->value.op_num == LOG);
             if (is_func) fprintf(file,"(");
             
 

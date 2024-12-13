@@ -17,7 +17,7 @@ Node* diff(Node* current_node, FILE* file, VariableArr* all_var)
         case NUMBER:
         {
             tex_dump_num(file, current_node, all_var);
-            
+
             Node* diff_node = create_new_node(NUMBER, 0, NULL, NULL);
             
             return diff_node;
@@ -39,7 +39,7 @@ Node* diff(Node* current_node, FILE* file, VariableArr* all_var)
             
             for (int i = 0; i < LEN_STRUCT_OP_ARR; i++)
             {
-                if (op_arr[i].num == current_node->value) {diff_node = op_arr[i].diff_form(current_node, file, all_var); break;}//return op_arr[i].diff_form(current_node, file, all_var);
+                if (op_arr[i].num == current_node->value.op_num) {diff_node = op_arr[i].diff_form(current_node, file, all_var); break;}//return op_arr[i].diff_form(current_node, file, all_var);
             }
 
             return diff_node;

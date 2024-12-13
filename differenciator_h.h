@@ -5,6 +5,8 @@
 #include <assert.h>
 
 
+typedef double Elem_t;
+
 const char* const FILE_MATH = "math_problem.txt";
 const char* const FILE_TEX  = "tex_files/tex.tex";
 const size_t      MAX_NAME_IDENT_SIZE = 200;
@@ -16,6 +18,22 @@ enum TypeNode
     NUMBER,
     VARIABLE,
     OPERATION
+};
+
+
+enum AllOperations
+{
+    ADD,
+    SUB,
+    MUL,
+    DIV,
+    SIN,
+    COS,
+    POW, ///////
+    LOG,
+    OPEN_SKOB,
+    CLOSE_SKOB, 
+    DOLL /////////////////////////////////////////////////////////
 };
 
 
@@ -43,10 +61,29 @@ struct VariableArr
     size_t size;
 };
 
+// struct Node
+// {
+//     TypeNode type;
+//     int      value; // само число или номер переменной или номер операции 
+//     Node*    left;
+//     Node*    right;
+// };
+
+union Value
+{
+    Elem_t num;
+    int var_num;
+    AllOperations op_num;
+};
+
+
 struct Node
 {
     TypeNode type;
-    int      value; // само число или номер переменной или номер операции 
+    // union 
+    Value value;
+
+    //   value; // само число или номер переменной или номер операции 
     Node*    left;
     Node*    right;
 };

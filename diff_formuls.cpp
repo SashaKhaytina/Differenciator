@@ -164,6 +164,15 @@ Node* diff_pow(Node* current_node, FILE* file, VariableArr* all_var)
 static Node* copy_branch(Node* current_node)
 {
     if (current_node == NULL) return NULL;
-    return create_new_node(current_node->type, current_node->value, copy_branch(current_node->left), copy_branch(current_node->right));
+
+
+    // ????????????????????????????
+    Elem_t val = 0;
+    if      (current_node->type == NUMBER)    val = current_node->value.num;
+    else if (current_node->type == VARIABLE)  val = (Elem_t) current_node->value.var_num;
+    else if (current_node->type == OPERATION) val = (Elem_t) current_node->value.op_num;
+
+    return create_new_node(current_node->type, val, copy_branch(current_node->left), copy_branch(current_node->right));
+    
 
 }

@@ -4,81 +4,81 @@
 
 
 
-int calculate_add(Node* node1, Node* node2)
+Elem_t calculate_add(Node* node1, Node* node2)
 {
     assert(node1);
     assert(node2);
 
 
-    return (node1->value + node2->value);
+    return (node1->value.num + node2->value.num);
 }
 
 
-int calculate_sub(Node* node1, Node* node2)
+Elem_t calculate_sub(Node* node1, Node* node2)
 {
     assert(node1);
     assert(node2);
 
 
-    return (node1->value - node2->value);
+    return (node1->value.num - node2->value.num);
 }
 
 
-int calculate_mul(Node* node1, Node* node2)
+Elem_t calculate_mul(Node* node1, Node* node2)
 {
     assert(node1);
     assert(node2);
 
 
-    return (node1->value * node2->value);
+    return (node1->value.num * node2->value.num);
 }
 
 
-int calculate_div(Node* node1, Node* node2)
+Elem_t calculate_div(Node* node1, Node* node2)
 {
     assert(node1);
     assert(node2);
     
 
-    return (node1->value / node2->value);
+    return (node1->value.num / node2->value.num);
 }
 
 
-int calculate_sin(Node* node1, Node* node2) // NULL_ARG
+Elem_t calculate_sin(Node* node1, Node* node2) // NULL_ARG
 {
     assert(!node1); // NULL
     assert(node2);
 
 
-    return ((int) sin((double) node2->value)); ///////////////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    return (sin((double) node2->value.num)); ///////////////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
 
 
-int calculate_cos(Node* node1, Node* node2) // NULL_ARG
+Elem_t calculate_cos(Node* node1, Node* node2) // NULL_ARG
 {
     assert(!node1); // NULL
     assert(node2);
 
 
-    return ((int) cos((double) node2->value)); ///////////////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    return ( cos((double) node2->value.num)); ///////////////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
 
 
-int calculate_pow(Node* node1, Node* node2)
+Elem_t calculate_pow(Node* node1, Node* node2)
 {
     assert(node1);
     assert(node2);
 
 
-    return ((int) pow((double) node1->value, (double) node2->value)); ///////////////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    return ( pow((double) node1->value.num, (double) node2->value.num)); ///////////////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
 
 
-int calculate_log(Node* node1, Node* node2) // NULL_ARG
+Elem_t calculate_log(Node* node1, Node* node2) // NULL_ARG
 {
     assert(!node1); // NULL
     assert(node2);
 
 
-    return ((int) log((double) node2->value)); ///////////////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    return ( log((double) node2->value.num)); ///////////////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }

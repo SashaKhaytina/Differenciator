@@ -12,9 +12,9 @@
 
 void print_node_now(Node* cur_node, VariableArr* all_var)
 {
-    if (cur_node->type == NUMBER) printf("%d\n", cur_node->value);
-    if (cur_node->type == VARIABLE) printf("%s\n", all_var->arr[cur_node->value - 1].name);
-    if (cur_node->type == OPERATION) printf("%s\n", op_arr[cur_node->value].name);
+    if (cur_node->type == NUMBER) printf("%d\n", cur_node->value.num);
+    if (cur_node->type == VARIABLE) printf("%s\n", all_var->arr[cur_node->value.var_num - 1].name);
+    if (cur_node->type == OPERATION) printf("%s\n", op_arr[cur_node->value.op_num].name);
     // printf("TOKEN[%d] (Node) = {%d - type, %d - value}\n", i, token->array[i].type, token->array[i].value);
 }
 
@@ -28,7 +28,8 @@ Node* GetG(Token* token, VariableArr* all_var)
 
     Node* val = GetE(token, all_var);
 
-    if (token->array[token->current_ind].value != DOLL) // if node->type not DEFAULT
+    bool operation = (token->array[token->current_ind].type == OPERATION);
+    if (!operation || token->array[token->current_ind].value.op_num != DOLL) // if node->type not DEFAULT
     {
         printf("ERROR\n");
         exit(0);
@@ -49,7 +50,7 @@ Node* GetN(Token* token)
         token->current_ind++; 
         return &token->array[token->current_ind - 1];
     }
-    printf("ERROR SYNTAX. want num in %d token\n", token->current_ind); // position will be better!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    printf("ERROR SYNTAX. want num in %d token\n", token->current_ind); // position will be better!
     return NULL;
 }
 
@@ -64,7 +65,7 @@ Node* GetE(Token* token, VariableArr* all_var)
     Node* val = GetT(token, all_var);
 
     bool operation = (token->array[token->current_ind].type == OPERATION);
-    while (operation && ((token->array[token->current_ind].value == ADD) || (token->array[token->current_ind].value == SUB)))
+    while (operation && ((token->array[token->current_ind].value.op_num == ADD) || (token->array[token->current_ind].value.op_num == SUB)))
     {
         Node* op_tok = &token->array[token->current_ind];
         token->current_ind++;
@@ -92,7 +93,7 @@ Node* GetT(Token* token, VariableArr* all_var)
     Node* val = GetP(token, all_var);
 
     bool operation = (token->array[token->current_ind].type == OPERATION);
-    while (operation && ((token->array[token->current_ind].value == MUL) || (token->array[token->current_ind].value == DIV)))
+    while (operation && ((token->array[token->current_ind].value.op_num == MUL) || (token->array[token->current_ind].value.op_num == DIV)))
     {
         Node* op_tok = &token->array[token->current_ind];
 
@@ -198,13 +199,13 @@ Node* GetP(Token* token, VariableArr* all_var)
     bool operation = (token->array[token->current_ind].type == OPERATION);
     if (operation)
     {
-        if (token->array[token->current_ind].value == OPEN_SKOB) // (
+        if (token->array[token->current_ind].value.op_num == OPEN_SKOB) // (
         {
             token->current_ind++;
             Node* val = GetE(token, all_var);
             
             operation = (token->array[token->current_ind].type == OPERATION);
-            if (operation && (token->array[token->current_ind].value != CLOSE_SKOB)) printf("ERROR SYNTAX. Want ')'\n"); 
+            if (operation && (token->array[token->current_ind].value.op_num != CLOSE_SKOB)) printf("ERROR SYNTAX. Want ')'\n"); 
 
             token->current_ind++;
             //________________________________IS POW?_________________________________________
@@ -215,7 +216,7 @@ Node* GetP(Token* token, VariableArr* all_var)
 
 
             operation = (token->array[token->current_ind].type == OPERATION);
-            if (operation && (token->array[token->current_ind].value == POW))
+            if (operation && (token->array[token->current_ind].value.op_num == POW))
             {
                 Node* op_tok = &token->array[token->current_ind];
                 token->current_ind++;
@@ -273,7 +274,7 @@ Node* GetF(Token* token, VariableArr* all_var)
     printf("IN F\n");
 
 
-    if ((token->array[token->current_ind].value == SIN) || (token->array[token->current_ind].value == COS) || (token->array[token->current_ind].value == LOG)) // степень сюда нельзя!!!!!!
+    if ((token->array[token->current_ind].value.op_num == SIN) || (token->array[token->current_ind].value.op_num == COS) || (token->array[token->current_ind].value.op_num == LOG)) // степень сюда нельзя!!!!!!
     {
         Node* op_tok = &token->array[token->current_ind];
 
@@ -281,12 +282,12 @@ Node* GetF(Token* token, VariableArr* all_var)
 
 
         bool operation = (token->array[token->current_ind].type == OPERATION);
-        if (operation && (token->array[token->current_ind].value != OPEN_SKOB)) {printf("ERROR SYNTAX. Want '('\n");}
+        if (operation && (token->array[token->current_ind].value.op_num != OPEN_SKOB)) {printf("ERROR SYNTAX. Want '('\n");}
         token->current_ind++;
 
         Node* val = GetE(token, all_var); // Inside "function"
 
-        if (operation && (token->array[token->current_ind].value != CLOSE_SKOB)) {printf("ERROR SYNTAX. Want ')'\n");}
+        if (operation && (token->array[token->current_ind].value.op_num != CLOSE_SKOB)) {printf("ERROR SYNTAX. Want ')'\n");}
         token->current_ind++;
 
 

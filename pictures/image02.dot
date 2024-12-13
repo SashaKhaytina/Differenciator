@@ -2,25 +2,5 @@ digraph
 {
 bgcolor="#F2EECB";
 rankdir = TB;
-POINT_0x5aeaa54f65b0[shape=Mrecord, label = "type - OPERATION(3) | /", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5aeaa54f6580[shape=Mrecord, label = "type - OPERATION(6) | ^", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5aeaa54f64a8[shape=Mrecord, label = "type - OPERATION(4) | sin", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5aeaa54f6520[shape=Mrecord, label = "type - OPERATION(0) | +", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5aeaa54f64f0[shape=Mrecord, label = "type - OPERATION(2) | *", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5aeaa54f64d8[shape=Mrecord, label = "type - NUMBER (1) | value - 2", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5aeaa54f6508[shape=Mrecord, label = "type - VARIABLE (2) | value - x (num - 1))", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5aeaa54f6538[shape=Mrecord, label = "type - NUMBER (1) | value - 3", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5aeaa54f6598[shape=Mrecord, label = "type - NUMBER (1) | value - 3", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5aeaa54f65c8[shape=Mrecord, label = "type - OPERATION(5) | cos", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5aeaa54f65f8[shape=Mrecord, label = "type - VARIABLE (2) | value - x (num - 1))", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5aeaa54f65b0 -> POINT_0x5aeaa54f6580
-POINT_0x5aeaa54f65b0 -> POINT_0x5aeaa54f65c8
-POINT_0x5aeaa54f6580 -> POINT_0x5aeaa54f64a8
-POINT_0x5aeaa54f6580 -> POINT_0x5aeaa54f6598
-POINT_0x5aeaa54f64a8 -> POINT_0x5aeaa54f6520
-POINT_0x5aeaa54f6520 -> POINT_0x5aeaa54f64f0
-POINT_0x5aeaa54f6520 -> POINT_0x5aeaa54f6538
-POINT_0x5aeaa54f64f0 -> POINT_0x5aeaa54f64d8
-POINT_0x5aeaa54f64f0 -> POINT_0x5aeaa54f6508
-POINT_0x5aeaa54f65c8 -> POINT_0x5aeaa54f65f8
+POINT_0x628a207a0610[shape=Mrecord, label = "type - NUMBER (1) | value - -246242888", style="filled",fillcolor="#D7CF8D"]
 }
