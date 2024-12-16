@@ -15,8 +15,10 @@ int main()
 {
     FILE* file = fopen(FILE_MATH, "r");
     Tree tree = {};
-    ForDump st_dump = {};
-    ForTexDump st_tex_dump = {};
+
+    ForDump dumps_counter = 0;
+
+
 
     VariableArr all_var = {};
 
@@ -25,7 +27,7 @@ int main()
     
 
     // printf("HE CAN READ\n");
-    dump(tree.root, &st_dump, &all_var);
+    dump(tree.root, &dumps_counter, &all_var);
     
     // print_tree(tree.root, &all_var);
     // printf("\n");
@@ -34,7 +36,7 @@ int main()
     // SOLVE_____________________________________________________________________________________________________________
 
     solve(tree.root);
-    dump(tree.root, &st_dump, &all_var);
+    dump(tree.root, &dumps_counter, &all_var);
     // print_tree(tree.root, &all_var);
     // printf("\n");
 
@@ -52,11 +54,11 @@ int main()
 
     
     solve(diff_tree.root);
-    dump(diff_tree.root, &st_dump, &all_var);
+    dump(diff_tree.root, &dumps_counter, &all_var);
     // print_tree(diff_tree.root, &all_var);
     // printf("\n");
 
-    dump(diff_tree.root, &st_dump, &all_var);
+    dump(diff_tree.root, &dumps_counter, &all_var);
 
 }
 

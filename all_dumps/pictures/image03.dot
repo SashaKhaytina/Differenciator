@@ -2,7 +2,9 @@ digraph
 {
 bgcolor="#F2EECB";
 rankdir = TB;
-POINT_0x64d470c4ee60[shape=Mrecord, label = "type - OPERATION(5) | cos", style="filled",fillcolor="#D7CF8D"]
-POINT_0x64d470c4eda0[shape=Mrecord, label = "type - VARIABLE (2) | value - x (num - 1))", style="filled",fillcolor="#D7CF8D"]
-POINT_0x64d470c4ee60 -> POINT_0x64d470c4eda0
+POINT_0x55c3e3101820[shape=Mrecord, label = "type - OPERATION(3) | /", style="filled",fillcolor="#D7CF8D"]
+POINT_0x55c3e31017f0[shape=Mrecord, label = "type - NUMBER (1) | value - 1", style="filled",fillcolor="#D7CF8D"]
+POINT_0x55c3e31017c0[shape=Mrecord, label = "type - VARIABLE (2) | value - x (num - 1))", style="filled",fillcolor="#D7CF8D"]
+POINT_0x55c3e3101820 -> POINT_0x55c3e31017f0
+POINT_0x55c3e3101820 -> POINT_0x55c3e31017c0
 }

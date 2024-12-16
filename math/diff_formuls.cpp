@@ -14,6 +14,10 @@ static Node* copy_branch(Node* current_node);
 
 Node* diff_add(Node* current_node, FILE* file, VariableArr* all_var)
 {
+    assert(current_node);
+    assert(file);
+    assert(all_var);
+
 
     tex_dump_add(file, current_node, all_var);
     
@@ -28,6 +32,11 @@ Node* diff_add(Node* current_node, FILE* file, VariableArr* all_var)
 
 Node* diff_sub(Node* current_node, FILE* file, VariableArr* all_var)
 {
+    assert(current_node);
+    assert(file);
+    assert(all_var);
+
+
     tex_dump_sub(file, current_node, all_var);
 
     Node* diff_node = _SUB(_DIFF(_LEFT), _DIFF(_RIGHT));
@@ -41,6 +50,11 @@ Node* diff_sub(Node* current_node, FILE* file, VariableArr* all_var)
 
 Node* diff_mul(Node* current_node, FILE* file, VariableArr* all_var)
 {
+    assert(current_node);
+    assert(file);
+    assert(all_var);
+
+
     tex_dump_mul(file, current_node, all_var);
 
     Node* diff_node = _ADD(_MUL(_DIFF(_LEFT), _COPY(_RIGHT)),
@@ -55,6 +69,11 @@ Node* diff_mul(Node* current_node, FILE* file, VariableArr* all_var)
 
 Node* diff_div(Node* current_node, FILE* file, VariableArr* all_var)
 {
+    assert(current_node);
+    assert(file);
+    assert(all_var);
+
+
     tex_dump_div(file, current_node, all_var);
 
     Node* diff_node = _DIV(_SUB(
@@ -74,6 +93,11 @@ Node* diff_div(Node* current_node, FILE* file, VariableArr* all_var)
 
 Node* diff_sin(Node* current_node, FILE* file, VariableArr* all_var)
 {
+    assert(current_node);
+    assert(file);
+    assert(all_var);
+
+
     tex_dump_sin(file, current_node, all_var);
 
     Node* diff_node = _MUL(_COS(_COPY(_RIGHT)), _DIFF(_RIGHT));
@@ -89,6 +113,11 @@ Node* diff_sin(Node* current_node, FILE* file, VariableArr* all_var)
 
 Node* diff_cos(Node* current_node, FILE* file, VariableArr* all_var)
 {
+    assert(current_node);
+    assert(file);
+    assert(all_var);
+
+
     tex_dump_cos(file, current_node, all_var);
 
     Node* diff_node = _MUL(_MUL(
@@ -105,9 +134,14 @@ Node* diff_cos(Node* current_node, FILE* file, VariableArr* all_var)
 
 
 
-Node* diff_log(Node* current_node, FILE* file, VariableArr* all_var)
+Node* diff_ln(Node* current_node, FILE* file, VariableArr* all_var)
 {
-    tex_dump_log(file, current_node, all_var);
+    assert(current_node);
+    assert(file);
+    assert(all_var);
+
+
+    tex_dump_ln(file, current_node, all_var);
 
     Node* diff_node = _DIV(_DIFF(_RIGHT), _COPY(_RIGHT));
     solve(diff_node);
@@ -122,6 +156,11 @@ Node* diff_log(Node* current_node, FILE* file, VariableArr* all_var)
 
 Node* diff_pow(Node* current_node, FILE* file, VariableArr* all_var) // TODO: 3^x will not work
 {
+    assert(current_node);
+    assert(file);
+    assert(all_var);
+
+
     tex_dump_pow(file, current_node, all_var);
     
     Node* diff_node = _MUL(_MUL(_COPY(_RIGHT), _POW(_COPY(_LEFT), _SUB(_RIGHT, _NUM(1)))), _DIFF(_LEFT));

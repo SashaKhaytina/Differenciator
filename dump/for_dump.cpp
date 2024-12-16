@@ -62,10 +62,10 @@ static void create_png(int num)
 
 
 
-void dump(Node* node, ForDump* st_dump, VariableArr* all_var) // рисует поддерево
+void dump(Node* node, ForDump* dumps_counter, VariableArr* all_var) // рисует поддерево
 {
-    st_dump->dumps_counter++;
-    int number_of_dump = st_dump->dumps_counter;
+    (*dumps_counter)++;
+    int number_of_dump = *dumps_counter;
 
     char sample[] = "all_dumps/pictures/image00.dot";
     sample[24] = (char) ('0' + ((int) number_of_dump / 10));
@@ -88,7 +88,7 @@ void dump(Node* node, ForDump* st_dump, VariableArr* all_var) // рисует п
 }
 
 
-void to_do_log_file(ForDump* st_dump)
+void to_do_log_file(ForDump* dumps_counter)
 {
     FILE* file = fopen(DUMP_FILE, "w");
 
@@ -96,7 +96,7 @@ void to_do_log_file(ForDump* st_dump)
     fprintf(file, "<style>body {background-color:%s}</style>\n\n", FONT_COLOR);
 
 
-    for (int i = 1; i <= st_dump->dumps_counter; i++)
+    for (int i = 1; i <= *dumps_counter; i++)
     {        
         char sample[] = "all_dumps/pictures/pic00.png";
         sample[23] = (char) ('0' + ((int) i / 10));

@@ -20,16 +20,8 @@ void tex_dump_mul(FILE* file, Node* current_node, VariableArr* all_var);
 void tex_dump_div(FILE* file, Node* current_node, VariableArr* all_var);
 void tex_dump_sin(FILE* file, Node* current_node, VariableArr* all_var);
 void tex_dump_cos(FILE* file, Node* current_node, VariableArr* all_var);
-void tex_dump_log(FILE* file, Node* current_node, VariableArr* all_var);
+void tex_dump_ln (FILE* file, Node* current_node, VariableArr* all_var);
 void tex_dump_pow(FILE* file, Node* current_node, VariableArr* all_var);
-
-
-
-
-
-
-
-
 
 
 #endif

@@ -6,6 +6,8 @@ static bool is_one (Node* current_node);
 static void add_node_value(Node* node, Node* node2);
 
 
+
+
 static bool is_null(Node* current_node)
 {
     if (current_node == NULL) return false;
@@ -169,7 +171,7 @@ void calculate_triv_cos(Node* node, int* diference)
 
 
 
-void calculate_triv_log(Node* node, int* diference)
+void calculate_triv_ln(Node* node, int* diference)
 {
     assert(node);
 

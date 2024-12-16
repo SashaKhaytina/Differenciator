@@ -4,20 +4,6 @@
 #include "../differenciator_h.h"
 
 
-// enum AllOperations
-// {
-//     ADD,
-//     SUB,
-//     MUL,
-//     DIV,
-//     SIN,
-//     COS,
-//     POW,
-//     LOG,
-//     OPEN_SKOB,
-//     CLOSE_SKOB, 
-//     DOLL 
-// };
 
 struct Operation
 {
@@ -40,11 +26,12 @@ const Operation op_arr[] = {
                                 {SIN,        "sin", diff_sin, calculate_sin, calculate_triv_sin},
                                 {COS,        "cos", diff_cos, calculate_cos, calculate_triv_cos},
                                 {POW,        "^",   diff_pow, calculate_pow, calculate_triv_pow},
-                                {LOG,        "log", diff_log, calculate_log, calculate_triv_log},
+                                {LN ,        "ln",  diff_ln , calculate_ln , calculate_triv_ln },
 
                                 {OPEN_SKOB,  "(",   NULL,     NULL,          NULL},
-                                {CLOSE_SKOB, ")",   NULL,     NULL,          NULL},
-                                {DOLL,       "$",   NULL,     NULL,          NULL} // TODO: wtf
+                                {CLOSE_SKOB, ")",   NULL,     NULL,          NULL}
+
+                                // {DOLL,       "$",   NULL,     NULL,          NULL} // TODO: wtf
                             };
 
 const int LEN_STRUCT_OP_ARR = (int) (sizeof(op_arr) / sizeof(Operation));

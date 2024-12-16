@@ -10,21 +10,26 @@
 // void print_node_now(Node* cur_node, VariableArr* all_var);
 
 
+
+
+// (token->current_ind < token->size) - it is very sad. We can do operation '\n' like '$'. 
+// And everywhere (token->current_ind < token->size)?
+
+
 Node* GetGraph(Token* token, VariableArr* all_var)
 {
     assert(token);
     assert(all_var);
 
-    // printf("In G\n");
-
 
     Node* val = GetE_Addition(token, all_var);
 
     // bool operation = (token->array[token->current_ind]->type == OPERATION);
-    if ((token->array[token->current_ind]->type != OPERATION) || token->array[token->current_ind]->value.op_num != DOLL) // if node->type not DEFAULT
-    {
-        printf("ERROR\n");
-    }
+    // if ((token->array[token->current_ind]->type != OPERATION) || token->array[token->current_ind]->value.op_num != DOLL) // if node->type not DEFAULT
+    // {
+    //     printf("ERROR\n");
+    // }
+
     return val;
 
 }
@@ -58,16 +63,15 @@ Node* GetE_Addition(Token* token, VariableArr* all_var)
 
     Node* val = GetT_Multiplication(token, all_var);
 
-    // bool operation = (token->array[token->current_ind]->type == OPERATION); // TODO: remove
-    while ((token->array[token->current_ind]->type == OPERATION) && 
+    while ((token->current_ind < token->size) &&
+        ((token->array[token->current_ind]->type == OPERATION) && 
             ((token->array[token->current_ind]->value.op_num == ADD) || 
-             (token->array[token->current_ind]->value.op_num == SUB)))
+             (token->array[token->current_ind]->value.op_num == SUB))))
     {
         Node* op_tok = token->array[token->current_ind];
         token->current_ind++;
 
         Node* val2 = GetT_Multiplication(token, all_var);
-        // operation = (token->array[token->current_ind].type == OPERATION);
 
         op_tok->left = val;
         op_tok->right = val2;
@@ -88,9 +92,11 @@ Node* GetT_Multiplication(Token* token, VariableArr* all_var)
 
     Node* val = GetP_Heaviest_Oper(token, all_var);
 
-    while ((token->array[token->current_ind]->type == OPERATION) && 
+    while ((token->current_ind < token->size)                        &&
+
+           ((token->array[token->current_ind]->type == OPERATION)  && 
           ((token->array[token->current_ind]->value.op_num == MUL) || 
-           (token->array[token->current_ind]->value.op_num == DIV)))
+           (token->array[token->current_ind]->value.op_num == DIV))))
     {
         Node* op_tok = token->array[token->current_ind];
 
@@ -118,7 +124,6 @@ Node* GetP_Heaviest_Oper(Token* token, VariableArr* all_var) // TODO: why not di
     // printf("In P\n");
 
 
-    // bool operation = (token->array[token->current_ind]->type == OPERATION);
     if ((token->array[token->current_ind]->type == OPERATION))
     {
         if (token->array[token->current_ind]->value.op_num == OPEN_SKOB) // (
@@ -135,9 +140,10 @@ Node* GetP_Heaviest_Oper(Token* token, VariableArr* all_var) // TODO: why not di
 
             //________________________________IS POW?_________________________________________
 
-            // operation = (token->array[token->current_ind]->type == OPERATION);
-            if ((token->array[token->current_ind]->type == OPERATION) && 
-                (token->array[token->current_ind]->value.op_num == POW))
+            if ((token->current_ind < token->size)                         && 
+
+                ((token->array[token->current_ind]->type == OPERATION) && 
+                (token->array[token->current_ind]->value.op_num == POW)))
             {
                 Node* op_tok = token->array[token->current_ind];
                 token->current_ind++;
@@ -185,7 +191,7 @@ Node* GetF_Function_one_arg(Token* token, VariableArr* all_var)
 
     if ((token->array[token->current_ind]->value.op_num == SIN) || 
         (token->array[token->current_ind]->value.op_num == COS) || 
-        (token->array[token->current_ind]->value.op_num == LOG))
+        (token->array[token->current_ind]->value.op_num == LN))
     {
 
         Node* op_tok = token->array[token->current_ind];
@@ -194,8 +200,6 @@ Node* GetF_Function_one_arg(Token* token, VariableArr* all_var)
 
         // print_node_now(token->array[token->current_ind], all_var);
 
-
-        // bool operation = (token->array[token->current_ind].type == OPERATION);
         if ((token->array[token->current_ind]->type == OPERATION) && 
             (token->array[token->current_ind]->value.op_num != OPEN_SKOB)) 
             printf("ERROR SYNTAX. Want '('\n");

@@ -74,7 +74,7 @@ Elem_t calculate_pow(Node* node1, Node* node2)
 }
 
 
-Elem_t calculate_log(Node* node1, Node* node2)
+Elem_t calculate_ln(Node* node1, Node* node2)
 {
     assert(!node1); // NULL
     assert(node2);

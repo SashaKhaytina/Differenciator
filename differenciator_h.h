@@ -6,6 +6,9 @@
 
 
 typedef double Elem_t;
+typedef int    ForDump;
+
+
 
 const char* const FILE_MATH             = "math_problem.txt";
 const char* const FILE_TEX              = "all_dumps/tex_files/tex.tex";
@@ -32,23 +35,18 @@ enum AllOperations
     SIN,
     COS,
     POW,
-    LOG,
+    LN,
     OPEN_SKOB,
     CLOSE_SKOB, 
-    DOLL  // TODO: remove
+    // DOLL  // TODO: remove
 };
 
 
-struct ForDump
-{
-    int dumps_counter;
-};  // TODO: remove blya
+// struct ForDump
+// {
+//     int dumps_counter;
+// };  // TODO: remove blya
 
-
-struct ForTexDump
-{
-    int tex_dumps_counter;
-};  // TODO: remove blya
 
 
 struct Variable
@@ -63,13 +61,6 @@ struct VariableArr
     size_t size;
 };
 
-// struct Node
-// {
-//     TypeNode type;
-//     int      value; // само число или номер переменной или номер операции 
-//     Node*    left;
-//     Node*    right;
-// };
 
 union Value
 {

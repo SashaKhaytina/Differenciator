@@ -31,7 +31,6 @@ static void get_num(int* current_symbol, char* arr_file_tree, Token* token)
 
     sscanf(arr_file_tree + *current_symbol, "%lg", &val_num);
 
-    // while (('0' <= arr_file_tree[*current_symbol]) && (arr_file_tree[*current_symbol] <= '9')) // TODO: it will not work if number is real
     bool not_was_point = true;
     while (isdigit(arr_file_tree[*current_symbol]) != 0 || arr_file_tree[*current_symbol] == '.')
     {
@@ -44,45 +43,17 @@ static void get_num(int* current_symbol, char* arr_file_tree, Token* token)
     }
 
 
-
-
-    // while (('0' <= arr_file_tree[*current_symbol]) && (arr_file_tree[*current_symbol] <= '9')) // TODO: it will not work if number is real
-    // {
-    //     val_num = val_num * 10 + arr_file_tree[*current_symbol] - '0';
-    //     (*current_symbol)++;
-    // }
-
-    // token->array[token->size] = create_new_node(NUMBER, val_num, NULL, NULL);
-    // token->size++;
-
-
-    // while (isdigit(arr_file_tree[*current_symbol]) != 0 || arr_file_tree[*current_symbol] == '.') // TODO: it will not work if number is real
-    // {
-    //     val_num = val_num * 10 + arr_file_tree[*current_symbol] - '0';
-    //     (*current_symbol)++;
-    // }
-
     token->array[token->size] = create_new_node(NUMBER, val_num, NULL, NULL);
     token->size++;
 
-
-
-
-    // current_token->type      = NUMBER;
-    // current_token->value.num = val_num;
-    // current_token->left      = NULL;
-    // current_token->right     = NULL;
 }
 
 
 static void get_word(int* current_symbol, char* arr_file_tree, Token* token, VariableArr* all_var)
 {
     int len_word = 0;
-    char temporary_name[MAX_NAME_IDENT_SIZE] = {}; // TODO: why not in heap?
-    // char* name = (char*) calloc(MAX_NAME_IDENT_SIZE, sizeof(char));
-    
-    // Read word
-    // while ((('A' <= arr_file_tree[*current_symbol]) && (arr_file_tree[*current_symbol] <= 'Z')) || (('a' <= arr_file_tree[*current_symbol]) && (arr_file_tree[*current_symbol] <= 'z'))) // TODO: isalpha
+    char temporary_name[MAX_NAME_IDENT_SIZE] = {};
+
     while (isalpha(arr_file_tree[*current_symbol]) != 0)
     {
         temporary_name[len_word] = arr_file_tree[*current_symbol]; 
@@ -100,13 +71,6 @@ static void get_word(int* current_symbol, char* arr_file_tree, Token* token, Var
     {
         if (strcmp(op_arr[i].name, name) == 0)
         {
-            // *current_token = {OPERATION, op_arr[i].num, NULL, NULL};
-            // current_token->type         = OPERATION;
-            // current_token->value.op_num = op_arr[i].num;
-            // current_token->left         = NULL;
-            // current_token->right        = NULL;
-
-
             token->array[token->size] = create_new_node(OPERATION, op_arr[i].num, NULL, NULL);
             token->size++;
 
@@ -122,13 +86,7 @@ static void get_word(int* current_symbol, char* arr_file_tree, Token* token, Var
 
         int num_var = find_variable(name, all_var);
         if  (num_var == NO_THIS_VAR) num_var = insert_new_variable(name, all_var);
-        
-        // *current_token = {VARIABLE, num_var, NULL, NULL};
-        
-        // current_token->type          = VARIABLE; // TODO: remember about func CreateNewNode
-        // current_token->value.var_num = num_var;
-        // current_token->left          = NULL;
-        // current_token->right         = NULL;
+
         token->array[token->size] = create_new_node(VARIABLE, num_var, NULL, NULL);
         token->size++;
 
@@ -149,13 +107,6 @@ static void get_oper(int* current_symbol, char* arr_file_tree, Token* token)
     {
         if (strcmp(op_arr[i].name, op) == 0)
         {
-            // *current_token = {OPERATION, op_arr[i].num, NULL, NULL};
-
-            // current_token->type         = OPERATION;
-            // current_token->value.op_num = op_arr[i].num;
-            // current_token->left         = NULL;
-            // current_token->right        = NULL;
-
             token->array[token->size] = create_new_node(OPERATION, op_arr[i].num, NULL, NULL);
             token->size++;
 
@@ -182,25 +133,22 @@ void get_token(Token* token, char* arr_file_tree, VariableArr* all_var)
 {
     int current_symbol = 0;
 
-    while (arr_file_tree[current_symbol] != '\0')
+    // while (arr_file_tree[current_symbol] != '\0') // see recursive....cpp
+    while (arr_file_tree[current_symbol] != '\n')
     {
         pass_spaces(&current_symbol, arr_file_tree);
 
         if      (isdigit(arr_file_tree[current_symbol]) != 0)
         {
-            // get_num(&current_symbol, arr_file_tree, &token->array[token->size]);
             get_num(&current_symbol, arr_file_tree, token);
-            // token->size++;
         }
         else if (isalpha(arr_file_tree[current_symbol]) != 0)
         {
             get_word(&current_symbol, arr_file_tree, token, all_var);
-            // token->size++;
         }
         else
         {
             get_oper(&current_symbol, arr_file_tree, token);
-            // token->size++;
         }
     }
 }
@@ -227,7 +175,6 @@ int insert_new_variable(char* var_name, VariableArr* all_var)
     all_var->size++;
 
     all_var->arr[all_var->size - 1].num = (int)all_var->size;
-    // strcpy(all_var->arr[all_var->size - 1].name, var_name);
     all_var->arr[all_var->size - 1].name = var_name;
 
     return (int)all_var->size;

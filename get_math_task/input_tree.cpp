@@ -34,7 +34,7 @@ void get_tree(FILE* file, Tree* tree, VariableArr* all_var)
     Token token = {};
     size_t len_text = size_file(file);
 
-    char arr_file_tree[MAX_TOKEN_S_ARR_SIZE] = {}; // TODO: ...
+    char arr_file_tree[MAX_TOKEN_S_ARR_SIZE] = {};
 
     size_t count_symbol = fread(arr_file_tree, sizeof(char), len_text, file);
     if (count_symbol != len_text) printf("ERROR read file\n");

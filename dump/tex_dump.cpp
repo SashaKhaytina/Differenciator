@@ -74,7 +74,7 @@ void fprint_tree(FILE* file, Node* node, VariableArr* all_var)
             fprint_node(file, node, all_var);
 
 
-            bool is_func =  (node->value.op_num == SIN || node->value.op_num == COS || node->value.op_num == LOG);
+            bool is_func =  (node->value.op_num == SIN || node->value.op_num == COS || node->value.op_num == LN);
             if (is_func) fprintf(file,"(");
             
 
@@ -212,13 +212,13 @@ void tex_dump_cos(FILE* file, Node* current_node, VariableArr* all_var)
 }
 
 
-void tex_dump_log(FILE* file, Node* current_node, VariableArr* all_var)
+void tex_dump_ln(FILE* file, Node* current_node, VariableArr* all_var)
 {
     fprintf(file, "$ d(");
     fprint_tree(file, current_node, all_var);
     fprintf(file, ") = \\frac{d(");
     fprint_tree(file, current_node->right, all_var);
-    fprintf(file, "){");
+    fprintf(file, ")}{");
     fprint_tree(file, current_node->right, all_var);
     fprintf(file, "}$\n\n");
     fprintf(file, "Посчитаем составные части:\n\n");
