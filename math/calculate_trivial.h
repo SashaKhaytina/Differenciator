@@ -3,7 +3,6 @@
 
 #include "../differenciator_h.h"
 
-// Or real numbers in this func (Или просто для чисел, а не для Node)
 
 void calculate_triv_add(Node* node, int* diference);
 void calculate_triv_sub(Node* node, int* diference);

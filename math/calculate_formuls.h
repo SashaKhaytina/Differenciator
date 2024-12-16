@@ -3,7 +3,6 @@
 
 #include "../differenciator_h.h"
 
-// Or real numbers in this func (Или просто для чисел, а не для Node)
 
 Elem_t calculate_add(Node* node1, Node* node2);
 Elem_t calculate_sub(Node* node1, Node* node2);

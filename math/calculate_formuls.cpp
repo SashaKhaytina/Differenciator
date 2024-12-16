@@ -44,23 +44,23 @@ Elem_t calculate_div(Node* node1, Node* node2)
 }
 
 
-Elem_t calculate_sin(Node* node1, Node* node2) // NULL_ARG
+Elem_t calculate_sin(Node* node1, Node* node2)
 {
     assert(!node1); // NULL
     assert(node2);
 
 
-    return (sin((double) node2->value.num)); ///////////////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    return (sin((double) node2->value.num));
 }
 
 
-Elem_t calculate_cos(Node* node1, Node* node2) // NULL_ARG
+Elem_t calculate_cos(Node* node1, Node* node2)
 {
     assert(!node1); // NULL
     assert(node2);
 
 
-    return ( cos((double) node2->value.num)); ///////////////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    return ( cos((double) node2->value.num));
 }
 
 
@@ -70,15 +70,15 @@ Elem_t calculate_pow(Node* node1, Node* node2)
     assert(node2);
 
 
-    return ( pow((double) node1->value.num, (double) node2->value.num)); ///////////////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    return ( pow((double) node1->value.num, (double) node2->value.num));
 }
 
 
-Elem_t calculate_log(Node* node1, Node* node2) // NULL_ARG
+Elem_t calculate_log(Node* node1, Node* node2)
 {
     assert(!node1); // NULL
     assert(node2);
 
 
-    return ( log((double) node2->value.num)); ///////////////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    return ( log((double) node2->value.num));
 }

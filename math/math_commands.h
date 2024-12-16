@@ -12,20 +12,20 @@
 //     DIV,
 //     SIN,
 //     COS,
-//     POW, ///////
+//     POW,
 //     LOG,
 //     OPEN_SKOB,
 //     CLOSE_SKOB, 
-//     DOLL /////////////////////////////////////////////////////////
+//     DOLL 
 // };
 
 struct Operation
 {
     AllOperations num;
-    char name[10];
-    Node*    (*diff_form)     (Node* current_node, FILE* file, VariableArr* all_var);
-    Elem_t   (*calculate)     (Node* node1, Node* node2); // for sin - value and NULL // TODO: make int elem_t
-    void     (*triv_calculate)(Node* node, int* diference);
+    char          name[10];
+    Node*         (*diff_form)     (Node* current_node, FILE* file, VariableArr* all_var);
+    Elem_t        (*calculate)     (Node* node1, Node* node2); 
+    void          (*triv_calculate)(Node* node, int* diference);
 };
 
 #include "diff_formuls.h"
@@ -44,7 +44,7 @@ const Operation op_arr[] = {
 
                                 {OPEN_SKOB,  "(",   NULL,     NULL,          NULL},
                                 {CLOSE_SKOB, ")",   NULL,     NULL,          NULL},
-                                {DOLL,       "$",   NULL,     NULL,          NULL}
+                                {DOLL,       "$",   NULL,     NULL,          NULL} // TODO: wtf
                             };
 
 const int LEN_STRUCT_OP_ARR = (int) (sizeof(op_arr) / sizeof(Operation));

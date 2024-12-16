@@ -2,5 +2,7 @@ digraph
 {
 bgcolor="#F2EECB";
 rankdir = TB;
-POINT_0x636c9d3b1ee0[shape=Mrecord, label = "type - NUMBER (1) | value - 0", style="filled",fillcolor="#D7CF8D"]
+POINT_0x64d470c4ee60[shape=Mrecord, label = "type - OPERATION(5) | cos", style="filled",fillcolor="#D7CF8D"]
+POINT_0x64d470c4eda0[shape=Mrecord, label = "type - VARIABLE (2) | value - x (num - 1))", style="filled",fillcolor="#D7CF8D"]
+POINT_0x64d470c4ee60 -> POINT_0x64d470c4eda0
 }

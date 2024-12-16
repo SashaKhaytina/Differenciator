@@ -7,10 +7,12 @@
 
 typedef double Elem_t;
 
-const char* const FILE_MATH = "math_problem.txt";
-const char* const FILE_TEX  = "all_dumps/tex_files/tex.tex";
-const size_t      MAX_NAME_IDENT_SIZE = 200;
-// const int         NULL_ARG = -1;
+const char* const FILE_MATH             = "math_problem.txt";
+const char* const FILE_TEX              = "all_dumps/tex_files/tex.tex";
+const size_t      MAX_NAME_IDENT_SIZE   = 200;
+const int         MAX_OPER_SYMBOLS_SIZE = 2;
+const int         MAX_TOKEN_S_ARR_SIZE  = 100;
+
 
 enum TypeNode
 {
@@ -29,30 +31,30 @@ enum AllOperations
     DIV,
     SIN,
     COS,
-    POW, ///////
+    POW,
     LOG,
     OPEN_SKOB,
     CLOSE_SKOB, 
-    DOLL /////////////////////////////////////////////////////////
+    DOLL  // TODO: remove
 };
 
 
 struct ForDump
 {
     int dumps_counter;
-};
+};  // TODO: remove blya
 
 
 struct ForTexDump
 {
     int tex_dumps_counter;
-};
+};  // TODO: remove blya
 
 
 struct Variable
 {
     int num;
-    char name[MAX_NAME_IDENT_SIZE]; // Я тут ИСПРАВЛЯЛЯ
+    char* name; 
 };
 
 struct VariableArr
@@ -80,7 +82,7 @@ union Value
 struct Node
 {
     TypeNode type;
-    Value value;
+    Value    value;
     Node*    left;
     Node*    right;
 };

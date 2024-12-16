@@ -4,14 +4,13 @@
 
 
 
-
 void fprint_node(FILE* file, Node* node, VariableArr* all_var)
 {
     switch (node->type)
     {
     case NUMBER:
     {
-        fprintf(file, "%g", node->value.num);
+        fprintf(file, "%lg", node->value.num);
         break;
     }
 
@@ -44,8 +43,6 @@ void fprint_node(FILE* file, Node* node, VariableArr* all_var)
     }
     }
 }
-
-
 
 
 void fprint_tree(FILE* file, Node* node, VariableArr* all_var)
@@ -91,22 +88,6 @@ void fprint_tree(FILE* file, Node* node, VariableArr* all_var)
 
 
 
-void tex_dump_num(FILE* file, Node* current_node, VariableArr* all_var)
-{
-    fprintf(file, "$ d(");
-    fprint_tree(file, current_node, all_var);
-    fprintf(file, ") = 0$\n\n");
-
-}
-
-
-void tex_dump_var(FILE* file, Node* current_node, VariableArr* all_var)
-{
-    fprintf(file, "$ d(");
-    fprint_tree(file, current_node, all_var);
-    fprintf(file, ") = 1$\n\n");
-}
-
 
 void tex_dump_start(FILE* file, Node* current_node, VariableArr* all_var)
 {
@@ -124,6 +105,22 @@ void tex_dump_end(FILE* file, Node* current_node, Node* diff_node, VariableArr* 
     fprintf(file, ") = ");
     fprint_tree(file, diff_node, all_var);
     fprintf(file, "$\n\n");
+}
+
+
+void tex_dump_num(FILE* file, Node* current_node, VariableArr* all_var)
+{
+    fprintf(file, "$ d(");
+    fprint_tree(file, current_node, all_var);
+    fprintf(file, ") = 0$\n\n");
+}
+
+
+void tex_dump_var(FILE* file, Node* current_node, VariableArr* all_var)
+{
+    fprintf(file, "$ d(");
+    fprint_tree(file, current_node, all_var);
+    fprintf(file, ") = 1$\n\n");
 }
 
 
@@ -238,7 +235,6 @@ void tex_dump_pow(FILE* file, Node* current_node, VariableArr* all_var)
     fprint_tree(file, current_node->left, all_var);
     fprintf(file, ")^(");
     fprint_tree(file, current_node->right, all_var);
-
     fprintf(file, " - 1) \\cdot d(");
     fprint_tree(file, current_node->left, all_var);
     fprintf(file, ")$\n\n");

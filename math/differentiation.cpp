@@ -7,8 +7,6 @@
 
 
 
-// in main: dif_tree.root = diff(tree.root) // tree - old, dif_tree - new
-
 Node* diff(Node* current_node, FILE* file, VariableArr* all_var)
 {
     if (current_node == NULL) return NULL;
@@ -22,7 +20,6 @@ Node* diff(Node* current_node, FILE* file, VariableArr* all_var)
             Node* diff_node = create_new_node(NUMBER, 0, NULL, NULL);
             
             return diff_node;
-            break; // this not use
         }
         
         case VARIABLE:
@@ -44,17 +41,12 @@ Node* diff(Node* current_node, FILE* file, VariableArr* all_var)
             }
 
             return diff_node;
-
         }
     
         default:
         {
             printf("ERROR\n");
-            break;
+            return NULL;
         }
     }
-
-    // if (current_node->type == NUMBER) return create_new_node(NUMBER, 0, NULL, NULL);
-    // if (current_node->type == VARIABLE) return create_new_node(NUMBER, 0, NULL, NULL)
-
 }

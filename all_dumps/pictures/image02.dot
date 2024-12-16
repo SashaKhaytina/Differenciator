@@ -2,5 +2,15 @@ digraph
 {
 bgcolor="#F2EECB";
 rankdir = TB;
-POINT_0x636c9d3b0610[shape=Mrecord, label = "type - NUMBER (1) | value - -34.8932", style="filled",fillcolor="#D7CF8D"]
+POINT_0x64d470c4d860[shape=Mrecord, label = "type - OPERATION(0) | +", style="filled",fillcolor="#D7CF8D"]
+POINT_0x64d470c4d6e0[shape=Mrecord, label = "type - OPERATION(1) | -", style="filled",fillcolor="#D7CF8D"]
+POINT_0x64d470c4d600[shape=Mrecord, label = "type - OPERATION(4) | sin", style="filled",fillcolor="#D7CF8D"]
+POINT_0x64d470c4d680[shape=Mrecord, label = "type - VARIABLE (2) | value - x (num - 1))", style="filled",fillcolor="#D7CF8D"]
+POINT_0x64d470c4d740[shape=Mrecord, label = "type - NUMBER (1) | value - 36", style="filled",fillcolor="#D7CF8D"]
+POINT_0x64d470c4da90[shape=Mrecord, label = "type - NUMBER (1) | value - 1.04622", style="filled",fillcolor="#D7CF8D"]
+POINT_0x64d470c4d860 -> POINT_0x64d470c4d6e0
+POINT_0x64d470c4d860 -> POINT_0x64d470c4da90
+POINT_0x64d470c4d6e0 -> POINT_0x64d470c4d600
+POINT_0x64d470c4d6e0 -> POINT_0x64d470c4d740
+POINT_0x64d470c4d600 -> POINT_0x64d470c4d680
 }

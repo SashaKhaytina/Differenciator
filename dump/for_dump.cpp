@@ -14,11 +14,6 @@ static void graph_create_point(Node* node, FILE* file, VariableArr* all_var)
 {   
     if (node == NULL) return;
 
-    // if(node->left != NULL && node->right != NULL) fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - %d | value - %d\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->type, node->value, ELEM_TREE_COLOR);
-    // else                                          fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - %d | value - %d\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->type, node->value, SHEET_TREE_COLOR);
-
-    // if (node->type == OPERATION) fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - %d | value - %d\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->type, node->value, ELEM_TREE_COLOR);
-
     if (node->type == OPERATION)
     {
         for (int i = 0; i < LEN_STRUCT_OP_ARR; i++)
@@ -35,12 +30,9 @@ static void graph_create_point(Node* node, FILE* file, VariableArr* all_var)
             if (all_var->arr[i].num == node->value.var_num) { name_var = all_var->arr[i].name; break;}
         }
 
-        fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - VARIABLE (%d) | value - %s (num - %d))\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->type, name_var, node->value, ELEM_TREE_COLOR);
+        fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - VARIABLE (%d) | value - %s (num - %d))\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->type, name_var, node->value.var_num, ELEM_TREE_COLOR);
     }
 
-
-
-    // else fprintf(file, "POINT_%p[shape=Mrecord, label = \"type - %d | value - %d\", style=\"filled\",fillcolor=\"%s\"]\n", node, node->type, node->value, ELEM_TREE_COLOR);
     
     graph_create_point(node->left, file, all_var);
     graph_create_point(node->right, file, all_var);

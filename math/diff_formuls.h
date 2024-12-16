@@ -1,6 +1,3 @@
-// Это будет подключаться к главному хедеру. (так как там массив операций)
-// Эти функции хотим в структуру Operation (и в массив) op_arr.
-// Тогда в diff() просто цикл, который вызывает функцию по операции
 #ifndef DIFF_FORMULS
 #define DIFF_FORMULS
 
@@ -19,13 +16,10 @@
 #define _POW(left, right) create_new_node(OPERATION, POW, left, right)
 #define _SIN(arg)         create_new_node(OPERATION, SIN, NULL, arg)
 #define _COS(arg)         create_new_node(OPERATION, COS, NULL, arg)
-#define _LOG(arg)         create_new_node(OPERATION, ADD, NULL, arg)
+#define _LOG(arg)         create_new_node(OPERATION, LOG, NULL, arg)
 
 #define _DIFF(arg)        diff(arg, file, all_var)
 #define _COPY(arg)        copy_branch(arg)
-
-
-
 
 
 
