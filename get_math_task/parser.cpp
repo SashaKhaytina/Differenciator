@@ -1,4 +1,4 @@
-#include "recursive_descent_algorithm.h"
+#include "parser.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -63,8 +63,9 @@ Node* GetE_Addition(Token* token, VariableArr* all_var)
 
     Node* val = GetT_Multiplication(token, all_var);
 
-    while ((token->current_ind < token->size) &&
-        ((token->array[token->current_ind]->type == OPERATION) && 
+    while ((token->current_ind < token->size) 
+            &&
+            ((token->array[token->current_ind]->type == OPERATION) && 
             ((token->array[token->current_ind]->value.op_num == ADD) || 
              (token->array[token->current_ind]->value.op_num == SUB))))
     {
@@ -90,10 +91,10 @@ Node* GetT_Multiplication(Token* token, VariableArr* all_var)
     // printf("In T\n");
 
 
-    Node* val = GetP_Heaviest_Oper(token, all_var);
+    Node* val = GetP_Pow(token, all_var);
 
-    while ((token->current_ind < token->size)                        &&
-
+    while ((token->current_ind < token->size)                        
+            &&
            ((token->array[token->current_ind]->type == OPERATION)  && 
           ((token->array[token->current_ind]->value.op_num == MUL) || 
            (token->array[token->current_ind]->value.op_num == DIV))))
@@ -102,7 +103,7 @@ Node* GetT_Multiplication(Token* token, VariableArr* all_var)
 
         token->current_ind++;
 
-        Node* val2 = GetP_Heaviest_Oper(token, all_var);
+        Node* val2 = GetP_Pow(token, all_var);
 
         op_tok->left = val;
         op_tok->right = val2;
@@ -116,7 +117,38 @@ Node* GetT_Multiplication(Token* token, VariableArr* all_var)
 
 
 
-Node* GetP_Heaviest_Oper(Token* token, VariableArr* all_var) // TODO: why not divided on functions
+Node* GetP_Pow(Token* token, VariableArr* all_var)
+{
+    assert(token);
+    assert(all_var); 
+
+
+    Node* val = Get_Heaviest_Oper(token, all_var);
+
+    while ((token->current_ind < token->size)                       
+            &&
+            token->array[token->current_ind]->type == OPERATION && 
+            token->array[token->current_ind]->value.op_num == POW)
+    {
+        Node* op_tok = token->array[token->current_ind];
+
+        token->current_ind++;
+
+        Node* val2 = Get_Heaviest_Oper(token, all_var);
+        
+        
+        op_tok->left = val;
+        op_tok->right = val2;
+        val = op_tok;           // A^B^C = (A^B)^C
+    }
+
+    return val;
+}
+
+
+
+
+Node* Get_Heaviest_Oper(Token* token, VariableArr* all_var) // TODO: why not divided on functions
 {
     assert(token);
     assert(all_var); 
@@ -138,34 +170,6 @@ Node* GetP_Heaviest_Oper(Token* token, VariableArr* all_var) // TODO: why not di
             token->current_ind++;
 
 
-            //________________________________IS POW?_________________________________________
-
-            if ((token->current_ind < token->size)                         && 
-
-                ((token->array[token->current_ind]->type == OPERATION) && 
-                (token->array[token->current_ind]->value.op_num == POW)))
-            {
-                Node* op_tok = token->array[token->current_ind];
-                token->current_ind++;
-
-                // operation = (token->array[token->current_ind].type == OPERATION);
-                // if (operation && (token->array[token->current_ind].value != OPEN_SKOB)) printf("ERROR SYNTAX. Want '('\n"); 
-                // token->current_ind++;
-                // Node* val2 =  GetE(token, all_var);
-
-                // operation = (token->array[token->current_ind].type == OPERATION);
-                // if (operation && (token->array[token->current_ind].value != CLOSE_SKOB)) printf("ERROR SYNTAX. Want ')'\n"); 
-                // token->current_ind++;
-
-                Node* val2 =  GetNumber(token); // вместо верхнего
-
-                op_tok->left  = val;
-                op_tok->right = val2;
-
-                return op_tok;
-            }
-            //_____________________________________________________________________________________________________________
-            
             return val;
 
         }

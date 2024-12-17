@@ -1,6 +1,6 @@
 #include "input_tree.h"
 
-#include "recursive_descent_algorithm.h"
+#include "parser.h"
 #include "token.h"
 
 #include <ctype.h>
