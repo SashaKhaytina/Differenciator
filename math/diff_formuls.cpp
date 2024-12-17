@@ -178,14 +178,9 @@ static Node* copy_branch(Node* current_node)
 {
     if (current_node == NULL) return NULL;
 
-
-    // ????????????????????????????
     Elem_t val = 0;
-    if      (current_node->type == NUMBER)    val = current_node->value.num;
-    else if (current_node->type == VARIABLE)  val = (Elem_t) current_node->value.var_num;
-    else if (current_node->type == OPERATION) val = (Elem_t) current_node->value.op_num;
-
-    return create_new_node(current_node->type, val, copy_branch(current_node->left), copy_branch(current_node->right));
-    
+    if (current_node->type == NUMBER)   return create_new_node_num(current_node->type, current_node->value.num,     copy_branch(current_node->left), copy_branch(current_node->right));
+    if (current_node->type == VARIABLE) return create_new_node_var(current_node->type, current_node->value.var_num, copy_branch(current_node->left), copy_branch(current_node->right));
+    else                                return create_new_node_op (current_node->type, current_node->value.op_num,  copy_branch(current_node->left), copy_branch(current_node->right));
 
 }

@@ -11,10 +11,11 @@
 const int NO_THIS_VAR = -1;
 
 
-static void pass_spaces(int* point_current_letter, char* arr_file_tree);
-static void get_word   (int* current_symbol, char* arr_file_tree, Token* token, VariableArr* all_var);
-static void get_num    (int* current_symbol, char* arr_file_tree, Token* token);
-static void get_oper   (int* current_symbol, char* arr_file_tree, Token* token);
+static void pass_spaces       (int* point_current_letter, char* arr_file_tree);
+static void get_word          (int* current_symbol, char* arr_file_tree, Token* token, VariableArr* all_var);
+static void get_num           (int* current_symbol, char* arr_file_tree, Token* token);
+static void get_oper          (int* current_symbol, char* arr_file_tree, Token* token);
+static bool find_and_create_op(Token* token, char* name);
 
 
 
@@ -42,8 +43,7 @@ static void get_num(int* current_symbol, char* arr_file_tree, Token* token)
         (*current_symbol)++;
     }
 
-
-    token->array[token->size] = create_new_node(NUMBER, val_num, NULL, NULL);
+    token->array[token->size] = _NUM(val_num);
     token->size++;
 
 }
@@ -66,19 +66,21 @@ static void get_word(int* current_symbol, char* arr_file_tree, Token* token, Var
 
 
     // Is it Operation?
-    bool is_oper = false;
-    for (int i = 0; i < LEN_STRUCT_OP_ARR; i++)
-    {
-        if (strcmp(op_arr[i].name, name) == 0)
-        {
-            token->array[token->size] = create_new_node(OPERATION, op_arr[i].num, NULL, NULL);
-            token->size++;
+    // bool is_oper = false;
+    // for (int i = 0; i < LEN_STRUCT_OP_ARR; i++)
+    // {
+    //     if (strcmp(op_arr[i].name, name) == 0)
+    //     {
+    //         token->array[token->size] = create_new_node_op(OPERATION, op_arr[i].num, NULL, NULL);
+    //         token->size++;
 
-            is_oper = true;
+    //         is_oper = true;
 
-            break; 
-        }
-    }
+    //         break; 
+    //     }
+    // }
+    bool is_oper = find_and_create_op(token, name);
+
 
     // It is Variable
     if (!is_oper)
@@ -87,7 +89,7 @@ static void get_word(int* current_symbol, char* arr_file_tree, Token* token, Var
         int num_var = find_variable(name, all_var);
         if  (num_var == NO_THIS_VAR) num_var = insert_new_variable(name, all_var);
 
-        token->array[token->size] = create_new_node(VARIABLE, num_var, NULL, NULL);
+        token->array[token->size] = _VAR(num_var);
         token->size++;
 
     }
@@ -101,20 +103,22 @@ static void get_oper(int* current_symbol, char* arr_file_tree, Token* token)
     op[0] = arr_file_tree[*current_symbol];
     (*current_symbol)++;
 
-    bool is_oper = false;
+    bool is_oper = find_and_create_op(token, op);
 
-    for (int i = 0; i < LEN_STRUCT_OP_ARR; i++)
-    {
-        if (strcmp(op_arr[i].name, op) == 0)
-        {
-            token->array[token->size] = create_new_node(OPERATION, op_arr[i].num, NULL, NULL);
-            token->size++;
+    // bool is_oper = false;
 
-            is_oper = true;
+    // for (int i = 0; i < LEN_STRUCT_OP_ARR; i++)
+    // {
+    //     if (strcmp(op_arr[i].name, op) == 0)
+    //     {
+    //         token->array[token->size] = create_new_node_op(OPERATION, op_arr[i].num, NULL, NULL);
+    //         token->size++;
 
-            break; 
-        }
-    }
+    //         is_oper = true;
+
+    //         break; 
+    //     }
+    // }
     if (!is_oper) printf("SYNTAX ERROR\n");
 }
 
@@ -178,6 +182,27 @@ int insert_new_variable(char* var_name, VariableArr* all_var)
     all_var->arr[all_var->size - 1].name = var_name;
 
     return (int)all_var->size;
+}
+
+
+static bool find_and_create_op(Token* token, char* name)
+{
+    bool is_oper = false;
+
+    for (int i = 0; i < LEN_STRUCT_OP_ARR; i++)
+    {
+        if (strcmp(op_arr[i].name, name) == 0)
+        {
+            token->array[token->size] = create_new_node_op(OPERATION, op_arr[i].num, NULL, NULL);
+            token->size++;
+
+            is_oper = true;
+
+            break; 
+        }
+    }
+
+    return is_oper;
 }
 
 

@@ -17,7 +17,7 @@ Node* diff(Node* current_node, FILE* file, VariableArr* all_var)
         {
             tex_dump_num(file, current_node, all_var);
 
-            Node* diff_node = create_new_node(NUMBER, 0, NULL, NULL);
+            Node* diff_node = _NUM(0);
             
             return diff_node;
         }
@@ -26,7 +26,7 @@ Node* diff(Node* current_node, FILE* file, VariableArr* all_var)
         {
             tex_dump_var(file, current_node, all_var);
 
-            Node* diff_node = create_new_node(NUMBER, 1, NULL, NULL);
+            Node* diff_node = _NUM(1);
 
             return diff_node;
         }
