@@ -25,12 +25,9 @@
 
 
 
-
-// Node* create_new_node(TypeNode type, Elem_t num, Node* left, Node* right);
 Node* create_new_node_num(TypeNode type, Elem_t num,           Node* left, Node* right); 
 Node* create_new_node_var(TypeNode type, int var_num,          Node* left, Node* right); 
 Node* create_new_node_op (TypeNode type, AllOperations op_num, Node* left, Node* right); 
-
 
 
 void solve(Node* current_node);

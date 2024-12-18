@@ -4,11 +4,11 @@
 #include "../differenciator_h.h"
 #include "token.h"
 
-enum Status
-{
-    OK,
-    ERROR
-};
+// enum Status
+// {
+//     OK,
+//     ERROR
+// };
 
 
 Node* GetGraph             (Token* token, VariableArr* all_var);

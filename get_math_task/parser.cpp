@@ -39,12 +39,9 @@ Node* GetNumber(Token* token)
 {
     assert(token);
 
-    // printf("In N\n");
-
 
     if (token->array[token->current_ind]->type == NUMBER) 
     {
-        // printf("OUT N\n");
         token->current_ind++; 
         return token->array[token->current_ind - 1];
     }
@@ -57,8 +54,6 @@ Node* GetE_Addition(Token* token, VariableArr* all_var)
 {
     assert(token);
     assert(all_var);
-
-    // printf("In A\n");
 
 
     Node* val = GetT_Multiplication(token, all_var);
@@ -87,8 +82,6 @@ Node* GetT_Multiplication(Token* token, VariableArr* all_var)
 {
     assert(token);
     assert(all_var);
-
-    // printf("In T\n");
 
 
     Node* val = GetP_Pow(token, all_var);
@@ -148,17 +141,15 @@ Node* GetP_Pow(Token* token, VariableArr* all_var)
 
 
 
-Node* Get_Heaviest_Oper(Token* token, VariableArr* all_var) // TODO: why not divided on functions
+Node* Get_Heaviest_Oper(Token* token, VariableArr* all_var)
 {
     assert(token);
     assert(all_var); 
 
-    // printf("In P\n");
-
 
     if ((token->array[token->current_ind]->type == OPERATION))
     {
-        if (token->array[token->current_ind]->value.op_num == OPEN_SKOB) // (
+        if (token->array[token->current_ind]->value.op_num == OPEN_SKOB) 
         {
             token->current_ind++;
             Node* val = GetE_Addition(token, all_var);
@@ -180,7 +171,7 @@ Node* Get_Heaviest_Oper(Token* token, VariableArr* all_var) // TODO: why not div
         }
     }
     
-    else if (token->array[token->current_ind]->type == VARIABLE) return GetVariable(token, all_var); // тут что-то не то. Логика странная
+    else if (token->array[token->current_ind]->type == VARIABLE) return GetVariable(token, all_var);
     else                                                         return GetNumber(token);
     return NULL;
 }
@@ -191,7 +182,6 @@ Node* GetF_Function_one_arg(Token* token, VariableArr* all_var)
     assert(token);
     assert(all_var);
 
-    // printf("In F\n");
 
     if ((token->array[token->current_ind]->value.op_num == SIN) || 
         (token->array[token->current_ind]->value.op_num == COS) || 
@@ -202,14 +192,12 @@ Node* GetF_Function_one_arg(Token* token, VariableArr* all_var)
 
         token->current_ind++;
 
-        // print_node_now(token->array[token->current_ind], all_var);
-
         if ((token->array[token->current_ind]->type == OPERATION) && 
             (token->array[token->current_ind]->value.op_num != OPEN_SKOB)) 
             printf("ERROR SYNTAX. Want '('\n");
         token->current_ind++;
 
-        Node* val = GetE_Addition(token, all_var); // Inside "function"
+        Node* val = GetE_Addition(token, all_var); 
 
         if ((token->array[token->current_ind]->type == OPERATION) && 
             (token->array[token->current_ind]->value.op_num != CLOSE_SKOB)) 
@@ -232,8 +220,6 @@ Node* GetVariable(Token* token, VariableArr* all_var)
 {
     assert(token);
     assert(all_var);
-
-    // printf("In V\n");
 
 
     if (token->array[token->current_ind]->type == VARIABLE) 

@@ -156,7 +156,7 @@ Node* diff_ln(Node* current_node, FILE* file, VariableArr* all_var)
 
 
 
-Node* diff_pow(Node* current_node, FILE* file, VariableArr* all_var) // TODO: 3^x will not work
+Node* diff_pow(Node* current_node, FILE* file, VariableArr* all_var)
 {
     assert(current_node);
     assert(file);

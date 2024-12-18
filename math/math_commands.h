@@ -31,7 +31,7 @@ const Operation op_arr[] = {
                                 {OPEN_SKOB,  "(",   NULL,     NULL,          NULL},
                                 {CLOSE_SKOB, ")",   NULL,     NULL,          NULL}
 
-                                // {DOLL,       "$",   NULL,     NULL,          NULL} // TODO: wtf
+                                // {DOLL,       "$",   NULL,     NULL,          NULL} 
                             };
 
 const int LEN_STRUCT_OP_ARR = (int) (sizeof(op_arr) / sizeof(Operation));

@@ -1,5 +1,3 @@
-// за что..
-
 #ifndef DIFFERENTIATION
 #define DIFFERENTIATION
 

@@ -5,11 +5,11 @@
 #include <stdio.h>
 
 
-enum BranchDirection
-{
-    RIGHT,
-    LEFT
-};
+// enum BranchDirection
+// {
+//     RIGHT,
+//     LEFT
+// };
 
 
 void get_tree(FILE* file, Tree* tree, VariableArr* all_var);

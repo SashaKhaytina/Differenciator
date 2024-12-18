@@ -5,21 +5,7 @@
 
 #include "../math/math_commands.h"
 
-// Node* create_new_node(TypeNode type, Elem_t num , Node* left, Node* right) // TODO: what if elem t = char*
-// {
-//     Node* new_node = (Node*) calloc(1, sizeof(Node));
-//     // *new_node = {type, val, left, right};
-//     new_node->type = type;
 
-//     if      (type == NUMBER)    new_node->value.num     = num;
-//     else if (type == VARIABLE)  new_node->value.var_num = (int) num;
-//     else if (type == OPERATION) new_node->value.op_num  = (AllOperations) num; // is it norm hahahahah?
-
-//     new_node->left  = left;
-//     new_node->right = right;
-
-//     return new_node;
-// }
 
 Node* create_new_node_num(TypeNode type, Elem_t num, Node* left, Node* right) 
 {

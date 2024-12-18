@@ -19,7 +19,7 @@ static bool find_and_create_op(Token* token, char* name);
 
 
 
-static void pass_spaces(int* point_current_letter, char* arr_file_tree) // add SKIP COMMENTS!!!!!!!!!!!!!!!!!!
+static void pass_spaces(int* point_current_letter, char* arr_file_tree)
 {
     while ((arr_file_tree[*point_current_letter] == '\t') || (arr_file_tree[*point_current_letter] == '\n') || (arr_file_tree[*point_current_letter] == ' ')) *point_current_letter += 1;
 }
@@ -64,26 +64,10 @@ static void get_word(int* current_symbol, char* arr_file_tree, Token* token, Var
     char* name = (char*) calloc(len_word, sizeof(char));
     strcpy(name, temporary_name);
 
-
-    // Is it Operation?
-    // bool is_oper = false;
-    // for (int i = 0; i < LEN_STRUCT_OP_ARR; i++)
-    // {
-    //     if (strcmp(op_arr[i].name, name) == 0)
-    //     {
-    //         token->array[token->size] = create_new_node_op(OPERATION, op_arr[i].num, NULL, NULL);
-    //         token->size++;
-
-    //         is_oper = true;
-
-    //         break; 
-    //     }
-    // }
     bool is_oper = find_and_create_op(token, name);
 
 
-    // It is Variable
-    if (!is_oper)
+    if (!is_oper)    // It is Variable 
     {
 
         int num_var = find_variable(name, all_var);
@@ -105,20 +89,6 @@ static void get_oper(int* current_symbol, char* arr_file_tree, Token* token)
 
     bool is_oper = find_and_create_op(token, op);
 
-    // bool is_oper = false;
-
-    // for (int i = 0; i < LEN_STRUCT_OP_ARR; i++)
-    // {
-    //     if (strcmp(op_arr[i].name, op) == 0)
-    //     {
-    //         token->array[token->size] = create_new_node_op(OPERATION, op_arr[i].num, NULL, NULL);
-    //         token->size++;
-
-    //         is_oper = true;
-
-    //         break; 
-    //     }
-    // }
     if (!is_oper) printf("SYNTAX ERROR\n");
 }
 
@@ -137,7 +107,7 @@ void get_token(Token* token, char* arr_file_tree, VariableArr* all_var)
 {
     int current_symbol = 0;
 
-    // while (arr_file_tree[current_symbol] != '\0') // see recursive....cpp
+    // while (arr_file_tree[current_symbol] != '\0') // see parser.cpp
     while (arr_file_tree[current_symbol] != '\n')
     {
         pass_spaces(&current_symbol, arr_file_tree);

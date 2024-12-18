@@ -27,8 +27,6 @@ static size_t size_file(FILE* file)
 }
 
 
-
-
 void get_tree(FILE* file, Tree* tree, VariableArr* all_var)
 {
     Token token = {};
@@ -40,16 +38,10 @@ void get_tree(FILE* file, Tree* tree, VariableArr* all_var)
     if (count_symbol != len_text) printf("ERROR read file\n");
 
     init_token(&token, len_text);
-    // printf("init_token\n");
-
 
     get_token(&token, arr_file_tree, all_var);
-    // printf("get_token\n");
-    // printf("\n");
-
 
     tree->root = GetGraph(&token, all_var);
-    // printf("GetGraph\n");
 }
 
 

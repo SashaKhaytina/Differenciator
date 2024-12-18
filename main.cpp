@@ -18,35 +18,24 @@ int main()
 
     ForDump dumps_counter = 0;
 
-
-
     VariableArr all_var = {};
 
+    
 
     get_tree(file, &tree, &all_var);
     
-
-    // printf("HE CAN READ\n");
     dump(tree.root, &dumps_counter, &all_var);
     
-    // print_tree(tree.root, &all_var);
-    // printf("\n");
 
 
     // SOLVE_____________________________________________________________________________________________________________
 
     solve(tree.root);
     dump(tree.root, &dumps_counter, &all_var);
-    // print_tree(tree.root, &all_var);
-    // printf("\n");
-
-    // print_tree(tree.root, &all_var);
-    // printf("\n\n\n\n");
 
 
     // DIFF______________________________________________________________________________________________________________
-
-    // printf("GET DIFF\n");
+    
     FILE* file_tex = fopen(FILE_TEX, "w");
     Tree diff_tree = {};
 
@@ -55,8 +44,7 @@ int main()
     
     solve(diff_tree.root);
     dump(diff_tree.root, &dumps_counter, &all_var);
-    // print_tree(diff_tree.root, &all_var);
-    // printf("\n");
+
 
     dump(diff_tree.root, &dumps_counter, &all_var);
 

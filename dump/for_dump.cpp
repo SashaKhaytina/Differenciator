@@ -62,7 +62,7 @@ static void create_png(int num)
 
 
 
-void dump(Node* node, ForDump* dumps_counter, VariableArr* all_var) // рисует поддерево
+void dump(Node* node, ForDump* dumps_counter, VariableArr* all_var) // draw subtree
 {
     (*dumps_counter)++;
     int number_of_dump = *dumps_counter;

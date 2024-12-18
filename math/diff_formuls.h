@@ -4,26 +4,6 @@
 #include "../differenciator_h.h" 
 
 
-// #define _LEFT  current_node->left
-// #define _RIGHT current_node->right
-
-// #define _NUM(num)         create_new_node_num(NUMBER,    num,  NULL, NULL)
-
-// #define _ADD(left, right) create_new_node_op (OPERATION, ADD, left, right)
-// #define _SUB(left, right) create_new_node_op (OPERATION, SUB, left, right)
-// #define _MUL(left, right) create_new_node_op (OPERATION, MUL, left, right)
-// #define _DIV(left, right) create_new_node_op (OPERATION, DIV, left, right)
-// #define _POW(left, right) create_new_node_op (OPERATION, POW, left, right)
-// #define _SIN(arg)         create_new_node_op (OPERATION, SIN, NULL, arg)
-// #define _COS(arg)         create_new_node_op (OPERATION, COS, NULL, arg)
-// #define _LOG(arg)         create_new_node_op (OPERATION, LOG, NULL, arg)
-
-// #define _DIFF(arg)        diff       (arg, file, all_var)
-// #define _COPY(arg)        copy_branch(arg)
-
-
-
-
 Node* diff_add(Node* current_node, FILE* file, VariableArr* all_var);
 Node* diff_sub(Node* current_node, FILE* file, VariableArr* all_var);
 Node* diff_mul(Node* current_node, FILE* file, VariableArr* all_var);

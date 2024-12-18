@@ -38,15 +38,8 @@ enum AllOperations
     LN,
     OPEN_SKOB,
     CLOSE_SKOB, 
-    // DOLL  // TODO: remove
+    // DOLL 
 };
-
-
-// struct ForDump
-// {
-//     int dumps_counter;
-// };  // TODO: remove blya
-
 
 
 struct Variable
