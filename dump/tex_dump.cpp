@@ -64,24 +64,25 @@ void fprint_tree(FILE* file, Node* node, VariableArr* all_var)
         {
             bool is_lower_op =  (node->value.op_num == ADD || node->value.op_num == SUB);
             bool is_pow =  (node->value.op_num == POW);
-            if (is_lower_op || is_pow) fprintf(file,"(");
-
+            bool is_func =  (node->value.op_num == SIN || node->value.op_num == COS || node->value.op_num == LN);
+            if (is_lower_op || is_pow) fprintf(file, "(");
 
             fprint_tree(file, node->left, all_var);
-            if (is_pow) fprintf(file,")");
+            
+            if (is_pow) fprintf(file, ")");
 
             
             fprint_node(file, node, all_var);
 
 
-            bool is_func =  (node->value.op_num == SIN || node->value.op_num == COS || node->value.op_num == LN);
-            if (is_func) fprintf(file,"(");
+            if (is_func) fprintf(file, "(");
+            if (is_pow)  fprintf(file, "{");
             
 
             fprint_tree(file, node->right, all_var);
 
-
-            if (is_func || is_lower_op) fprintf(file,")");
+            if (is_pow)  fprintf(file, "}");
+            if (is_func || is_lower_op) fprintf(file, ")");
         }
     }
 }
@@ -230,14 +231,12 @@ void tex_dump_pow(FILE* file, Node* current_node, VariableArr* all_var)
     fprintf(file, "$ d(");
     fprint_tree(file, current_node, all_var);
     fprintf(file, ") = ");
-    fprint_tree(file, current_node->right, all_var);
-    fprintf(file, " \\cdot (");
+    fprint_tree(file, current_node, all_var);
+    fprintf(file, " \\cdot d(ln(");
     fprint_tree(file, current_node->left, all_var);
-    fprintf(file, ")^(");
+    fprintf(file, ") \\cdot (");
     fprint_tree(file, current_node->right, all_var);
-    fprintf(file, " - 1) \\cdot d(");
-    fprint_tree(file, current_node->left, all_var);
-    fprintf(file, ")$\n\n");
+    fprintf(file, "))$\n\n");
     fprintf(file, "Посчитаем составные части:\n\n");
 }
 

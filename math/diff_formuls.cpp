@@ -6,6 +6,8 @@
 #include "../tree_s__commands/tree_commands.h"
 #include "../dump/tex_dump.h"
 
+#include <math.h>
+
 
 static Node* copy_branch(Node* current_node);
 
@@ -163,7 +165,9 @@ Node* diff_pow(Node* current_node, FILE* file, VariableArr* all_var) // TODO: 3^
 
     tex_dump_pow(file, current_node, all_var);
     
-    Node* diff_node = _MUL(_MUL(_COPY(_RIGHT), _POW(_COPY(_LEFT), _SUB(_RIGHT, _NUM(1)))), _DIFF(_LEFT));
+    Node* diff_node = _MUL(_POW(_LEFT, _RIGHT),
+                           _DIFF(_MUL(_LN(_LEFT), _RIGHT)));
+
     solve(diff_node);
 
     tex_dump_end(file, current_node, diff_node, all_var);

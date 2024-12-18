@@ -1,14 +1,18 @@
-$ d(((x)^5+(x)^3 \cdot 81)) = d((x)^5) + d((x)^3 \cdot 81)$
+$ d((((x)^{5}+(x)^{3 \cdot x})-ln(sin(x)) \cdot 81)) = d(((x)^{5}+(x)^{3 \cdot x})) - d(ln(sin(x)) \cdot 81)$
 
 Посчитаем составные части:
 
-$ d((x)^3 \cdot 81) = d((x)^3) \cdot (81) + d(81) \cdot ((x)^3)$
+$ d(ln(sin(x)) \cdot 81) = d(ln(sin(x))) \cdot (81) + d(81) \cdot (ln(sin(x)))$
 
 Посчитаем составные части:
 
 $ d(81) = 0$
 
-$ d((x)^3) = 3 \cdot (x)^(3 - 1) \cdot d(x)$
+$ d(ln(sin(x))) = \frac{d(sin(x))}{sin(x)}$
+
+Посчитаем составные части:
+
+$ d(sin(x)) = cos(x) \cdot d(x)$
 
 Посчитаем составные части:
 
@@ -16,13 +20,41 @@ $ d(x) = 1$
 
 Получилось:
 
-$ d((x)^3) = 3 \cdot (x)^2$
+$ d(sin(x)) = cos(x)$
 
 Получилось:
 
-$ d((x)^3 \cdot 81) = 3 \cdot (x)^2 \cdot 81$
+$ d(ln(sin(x))) = \frac{cos(x)}{sin(x)}$
 
-$ d((x)^5) = 5 \cdot (x)^(5 - 1) \cdot d(x)$
+Получилось:
+
+$ d(ln(sin(x)) \cdot 81) = \frac{cos(x)}{sin(x)} \cdot 81$
+
+$ d(((x)^{5}+(x)^{3 \cdot x})) = d((x)^{5}) + d((x)^{3 \cdot x})$
+
+Посчитаем составные части:
+
+$ d((x)^{3 \cdot x}) = (x)^{3 \cdot x} \cdot d(ln(x) \cdot (3 \cdot x))$
+
+Посчитаем составные части:
+
+$ d(ln(x) \cdot 3 \cdot x) = d(ln(x)) \cdot (3 \cdot x) + d(3 \cdot x) \cdot (ln(x))$
+
+Посчитаем составные части:
+
+$ d(3 \cdot x) = d(3) \cdot (x) + d(x) \cdot (3)$
+
+Посчитаем составные части:
+
+$ d(x) = 1$
+
+$ d(3) = 0$
+
+Получилось:
+
+$ d(3 \cdot x) = 3$
+
+$ d(ln(x)) = \frac{d(x)}{x}$
 
 Посчитаем составные части:
 
@@ -30,9 +62,49 @@ $ d(x) = 1$
 
 Получилось:
 
-$ d((x)^5) = 5 \cdot (x)^4$
+$ d(ln(x)) = \frac{1}{x}$
 
 Получилось:
 
-$ d(((x)^5+(x)^3 \cdot 81)) = (5 \cdot (x)^4+3 \cdot (x)^2 \cdot 81)$
+$ d(ln(x) \cdot 3 \cdot x) = (\frac{1}{x} \cdot 3 \cdot x+ln(x) \cdot 3)$
+
+Получилось:
+
+$ d((x)^{3 \cdot x}) = (x)^{3 \cdot x} \cdot (\frac{1}{x} \cdot 3 \cdot x+ln(x) \cdot 3)$
+
+$ d((x)^{5}) = (x)^{5} \cdot d(ln(x) \cdot (5))$
+
+Посчитаем составные части:
+
+$ d(ln(x) \cdot 5) = d(ln(x)) \cdot (5) + d(5) \cdot (ln(x))$
+
+Посчитаем составные части:
+
+$ d(5) = 0$
+
+$ d(ln(x)) = \frac{d(x)}{x}$
+
+Посчитаем составные части:
+
+$ d(x) = 1$
+
+Получилось:
+
+$ d(ln(x)) = \frac{1}{x}$
+
+Получилось:
+
+$ d(ln(x) \cdot 5) = \frac{1}{x} \cdot 5$
+
+Получилось:
+
+$ d((x)^{5}) = (x)^{5} \cdot \frac{1}{x} \cdot 5$
+
+Получилось:
+
+$ d(((x)^{5}+(x)^{3 \cdot x})) = ((x)^{5} \cdot \frac{1}{x} \cdot 5+(x)^{3 \cdot x} \cdot (\frac{1}{x} \cdot 3 \cdot x+ln(x) \cdot 3))$
+
+Получилось:
+
+$ d((((x)^{5}+(x)^{3 \cdot x})-ln(sin(x)) \cdot 81)) = (((x)^{5} \cdot \frac{1}{x} \cdot 5+(x)^{3 \cdot x} \cdot (\frac{1}{x} \cdot 3 \cdot x+ln(x) \cdot 3))-\frac{cos(x)}{sin(x)} \cdot 81)$
 

@@ -18,7 +18,7 @@
 #define _POW(left, right) create_new_node_op (OPERATION, POW, left, right)
 #define _SIN(arg)         create_new_node_op (OPERATION, SIN, NULL, arg)
 #define _COS(arg)         create_new_node_op (OPERATION, COS, NULL, arg)
-#define _LOG(arg)         create_new_node_op (OPERATION, LOG, NULL, arg)
+#define  _LN(arg)         create_new_node_op (OPERATION, LN,  NULL, arg)
 
 #define _DIFF(arg)        diff       (arg, file, all_var)
 #define _COPY(arg)        copy_branch(arg)
