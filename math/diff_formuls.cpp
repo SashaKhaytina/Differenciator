@@ -5,6 +5,7 @@
 
 #include "../tree_s__commands/tree_commands.h"
 #include "../dump/tex_dump.h"
+#include "../tree_s__commands/free.h"
 
 #include <math.h>
 
@@ -24,7 +25,7 @@ Node* diff_add(Node* current_node, FILE* file, VariableArr* all_var)
     tex_dump_add(file, current_node, all_var);
     
     Node* diff_node = _ADD(_DIFF(_LEFT), _DIFF(_RIGHT));
-    // solve(diff_node);
+    solve(diff_node);
     
     tex_dump_end(file, current_node, diff_node, all_var);
 
@@ -42,7 +43,7 @@ Node* diff_sub(Node* current_node, FILE* file, VariableArr* all_var)
     tex_dump_sub(file, current_node, all_var);
 
     Node* diff_node = _SUB(_DIFF(_LEFT), _DIFF(_RIGHT));
-    // solve(diff_node);
+    solve(diff_node);
 
     tex_dump_end(file, current_node, diff_node, all_var);
 
@@ -61,7 +62,7 @@ Node* diff_mul(Node* current_node, FILE* file, VariableArr* all_var)
 
     Node* diff_node = _ADD(_MUL(_DIFF(_LEFT), _COPY(_RIGHT)),
                            _MUL(_COPY(_LEFT), _DIFF(_RIGHT)));
-    // solve(diff_node);
+    solve(diff_node);
 
     tex_dump_end(file, current_node, diff_node, all_var);
 
@@ -83,7 +84,7 @@ Node* diff_div(Node* current_node, FILE* file, VariableArr* all_var)
                                 _MUL(_COPY(_LEFT), _DIFF(_RIGHT))), 
 
                             _MUL(_COPY(_RIGHT), _COPY(_RIGHT)));
-    // solve(diff_node);
+    solve(diff_node);
 
 
     tex_dump_end(file, current_node, diff_node, all_var);
@@ -104,7 +105,7 @@ Node* diff_sin(Node* current_node, FILE* file, VariableArr* all_var)
 
     Node* diff_node = _MUL(_COS(_COPY(_RIGHT)), _DIFF(_RIGHT));
 
-    // solve(diff_node);
+    solve(diff_node);
 
     tex_dump_end(file, current_node, diff_node, all_var);
     
@@ -126,7 +127,7 @@ Node* diff_cos(Node* current_node, FILE* file, VariableArr* all_var)
                                 _NUM(-1), 
                                 _SIN(_COPY(_RIGHT))), 
                            _DIFF(_RIGHT));
-    // solve(diff_node);
+    solve(diff_node);
     
     tex_dump_end(file, current_node, diff_node, all_var);
     
@@ -146,7 +147,7 @@ Node* diff_ln(Node* current_node, FILE* file, VariableArr* all_var)
     tex_dump_ln(file, current_node, all_var);
 
     Node* diff_node = _DIV(_DIFF(_RIGHT), _COPY(_RIGHT));
-    // solve(diff_node);
+    solve(diff_node);
     
     tex_dump_end(file, current_node, diff_node, all_var);
     
@@ -164,11 +165,14 @@ Node* diff_pow(Node* current_node, FILE* file, VariableArr* all_var)
 
 
     tex_dump_pow(file, current_node, all_var);
-    
-    Node* diff_node = _MUL(_POW(_COPY(_LEFT), _COPY(_RIGHT)),
-                           _DIFF(_MUL(_LN(_LEFT), _COPY(_RIGHT))));
 
-    // solve(diff_node);
+    Node* temp_node = _MUL(_LN(_COPY(_LEFT)), _COPY(_RIGHT));
+    Node* diff_node = _MUL(_POW(_COPY(_LEFT), _COPY(_RIGHT)), _DIFF(temp_node));
+
+    free_tree(temp_node);
+
+
+    solve(diff_node);
 
     tex_dump_end(file, current_node, diff_node, all_var);
 

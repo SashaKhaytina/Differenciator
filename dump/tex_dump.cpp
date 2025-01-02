@@ -16,7 +16,7 @@ void fprint_node(FILE* file, Node* node, VariableArr* all_var)
 
     case VARIABLE:
     {
-        for (int i = 0; i < all_var->size; i++) 
+        for (size_t i = 0; i < all_var->size; i++) 
         {
             if (all_var->arr[i].num == node->value.var_num) { fprintf(file, "%s", all_var->arr[i].name); break; }
         }

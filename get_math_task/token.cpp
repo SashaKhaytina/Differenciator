@@ -61,7 +61,7 @@ static void get_word(int* current_symbol, char* arr_file_tree, Token* token, Var
         (*current_symbol)++;
     }
 
-    char* name = (char*) calloc(len_word + 1, sizeof(char));
+    char* name = (char*) calloc((size_t)(len_word + 1), sizeof(char));
     strcpy(name, temporary_name);
 
     bool is_oper = find_and_create_op(token, name);

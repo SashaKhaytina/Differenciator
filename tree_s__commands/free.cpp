@@ -18,7 +18,7 @@ void free_tree(Node* node)
 
 void free_val(VariableArr* all_var)
 {
-    for (int i = 0; i < all_var->size; i++)
+    for (size_t i = 0; i < all_var->size; i++)
     {
         free(all_var->arr[i].name); all_var->arr[i].name = NULL;
     }
@@ -33,7 +33,7 @@ void free_tokens(Token* token)
 
 void free_needless_tokens(Token* token)
 {
-    for (int i = 0; i < token->size; i++)
+    for (size_t i = 0; i < token->size; i++)
     {
         if (token->array[i]->type == OPERATION && (token->array[i]->value.op_num == OPEN_SKOB || token->array[i]->value.op_num == CLOSE_SKOB))
         {

@@ -7,7 +7,7 @@ struct Token
 {
     Node** array;
     size_t size; 
-    int current_ind;
+    size_t current_ind;
 };
 
 int find_variable      (char* var_name, VariableArr* all_var);

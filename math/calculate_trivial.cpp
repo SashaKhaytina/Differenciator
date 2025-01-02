@@ -1,7 +1,11 @@
 #include "calculate_trivial.h"
 
 #include <stdlib.h>
+#include <math.h>
 #include "../tree_s__commands/free.h"
+
+
+const double DELTA = 1e-5;
 
 
 static bool is_null(Node* current_node);
@@ -12,12 +16,19 @@ static void shift_subtree (Node* node, Node* needed_node);
 
 
 
-
 static bool is_null(Node* current_node)
 {
     if (current_node == NULL) return false;
 
-    if ((current_node->type == NUMBER) && (current_node->value.num == 0)) return true;
+    if ((current_node->type == NUMBER) && (fabs(current_node->value.num) < DELTA)) return true;
+    return false;
+}
+
+static bool is_one(Node* current_node)
+{
+    if (current_node == NULL) return false;
+
+    if ((current_node->type == NUMBER) && (fabs(current_node->value.num - 1) < DELTA)) return true;
     return false;
 }
 
@@ -27,16 +38,6 @@ static void add_node_value(Node* node, Node* node2)
     else if (node->type == VARIABLE)  node->value.var_num = node2->value.var_num;
     else if (node->type == OPERATION) node->value.op_num  = node2->value.op_num;
 }
-
-
-static bool is_one(Node* current_node)
-{
-    if (current_node == NULL) return false;
-
-    if ((current_node->type == NUMBER) && (current_node->value.num == 1)) return true;
-    return false;
-}
-
 
 static void shift_subtree(Node* node, Node* needed_node)
 {

@@ -2,9 +2,55 @@ digraph
 {
 bgcolor="#F2EECB";
 rankdir = TB;
-POINT_0x5030000000a0[shape=Mrecord, label = "POINT_0x5030000000a0 | type - OPERATION(6) | ^", style="filled",fillcolor="#D7CF8D"]
-POINT_0x503000000070[shape=Mrecord, label = "POINT_0x503000000070 | type - VARIABLE (2) | value - x (num - 1))", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5030000000d0[shape=Mrecord, label = "POINT_0x5030000000d0 | type - NUMBER (1) | value - 4", style="filled",fillcolor="#D7CF8D"]
-POINT_0x5030000000a0 -> POINT_0x503000000070
-POINT_0x5030000000a0 -> POINT_0x5030000000d0
+POINT_0x503000000610[shape=Mrecord, label = "POINT_0x503000000610 | type - OPERATION(0) | +", style="filled",fillcolor="#D7CF8D"]
+POINT_0x503000000310[shape=Mrecord, label = "POINT_0x503000000310 | type - OPERATION(1) | -", style="filled",fillcolor="#D7CF8D"]
+POINT_0x503000000190[shape=Mrecord, label = "POINT_0x503000000190 | type - OPERATION(0) | +", style="filled",fillcolor="#D7CF8D"]
+POINT_0x503000000070[shape=Mrecord, label = "POINT_0x503000000070 | type - OPERATION(6) | ^", style="filled",fillcolor="#D7CF8D"]
+POINT_0x503000000040[shape=Mrecord, label = "POINT_0x503000000040 | type - VARIABLE (2) | value - x (num - 1))", style="filled",fillcolor="#D7CF8D"]
+POINT_0x503000000100[shape=Mrecord, label = "POINT_0x503000000100 | type - OPERATION(0) | +", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5030000000d0[shape=Mrecord, label = "POINT_0x5030000000d0 | type - NUMBER (1) | value - 1", style="filled",fillcolor="#D7CF8D"]
+POINT_0x503000000130[shape=Mrecord, label = "POINT_0x503000000130 | type - NUMBER (1) | value - 4", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5030000001f0[shape=Mrecord, label = "POINT_0x5030000001f0 | type - OPERATION(6) | ^", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5030000001c0[shape=Mrecord, label = "POINT_0x5030000001c0 | type - VARIABLE (2) | value - x (num - 1))", style="filled",fillcolor="#D7CF8D"]
+POINT_0x503000000280[shape=Mrecord, label = "POINT_0x503000000280 | type - OPERATION(2) | *", style="filled",fillcolor="#D7CF8D"]
+POINT_0x503000000250[shape=Mrecord, label = "POINT_0x503000000250 | type - NUMBER (1) | value - 3", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5030000002b0[shape=Mrecord, label = "POINT_0x5030000002b0 | type - VARIABLE (2) | value - x (num - 1))", style="filled",fillcolor="#D7CF8D"]
+POINT_0x503000000490[shape=Mrecord, label = "POINT_0x503000000490 | type - OPERATION(2) | *", style="filled",fillcolor="#D7CF8D"]
+POINT_0x503000000340[shape=Mrecord, label = "POINT_0x503000000340 | type - OPERATION(7) | ln", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5030000003a0[shape=Mrecord, label = "POINT_0x5030000003a0 | type - OPERATION(4) | sin", style="filled",fillcolor="#D7CF8D"]
+POINT_0x503000000400[shape=Mrecord, label = "POINT_0x503000000400 | type - VARIABLE (2) | value - x (num - 1))", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5030000005b0[shape=Mrecord, label = "POINT_0x5030000005b0 | type - OPERATION(6) | ^", style="filled",fillcolor="#D7CF8D"]
+POINT_0x503000000520[shape=Mrecord, label = "POINT_0x503000000520 | type - OPERATION(1) | -", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5030000004f0[shape=Mrecord, label = "POINT_0x5030000004f0 | type - NUMBER (1) | value - 4", style="filled",fillcolor="#D7CF8D"]
+POINT_0x503000000550[shape=Mrecord, label = "POINT_0x503000000550 | type - NUMBER (1) | value - 1", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5030000005e0[shape=Mrecord, label = "POINT_0x5030000005e0 | type - NUMBER (1) | value - 4", style="filled",fillcolor="#D7CF8D"]
+POINT_0x503000000700[shape=Mrecord, label = "POINT_0x503000000700 | type - OPERATION(3) | /", style="filled",fillcolor="#D7CF8D"]
+POINT_0x503000000640[shape=Mrecord, label = "POINT_0x503000000640 | type - OPERATION(5) | cos", style="filled",fillcolor="#D7CF8D"]
+POINT_0x5030000006a0[shape=Mrecord, label = "POINT_0x5030000006a0 | type - VARIABLE (2) | value - x (num - 1))", style="filled",fillcolor="#D7CF8D"]
+POINT_0x503000000730[shape=Mrecord, label = "POINT_0x503000000730 | type - NUMBER (1) | value - 54", style="filled",fillcolor="#D7CF8D"]
+POINT_0x503000000610 -> POINT_0x503000000310
+POINT_0x503000000610 -> POINT_0x503000000700
+POINT_0x503000000310 -> POINT_0x503000000190
+POINT_0x503000000310 -> POINT_0x503000000490
+POINT_0x503000000190 -> POINT_0x503000000070
+POINT_0x503000000190 -> POINT_0x5030000001f0
+POINT_0x503000000070 -> POINT_0x503000000040
+POINT_0x503000000070 -> POINT_0x503000000100
+POINT_0x503000000100 -> POINT_0x5030000000d0
+POINT_0x503000000100 -> POINT_0x503000000130
+POINT_0x5030000001f0 -> POINT_0x5030000001c0
+POINT_0x5030000001f0 -> POINT_0x503000000280
+POINT_0x503000000280 -> POINT_0x503000000250
+POINT_0x503000000280 -> POINT_0x5030000002b0
+POINT_0x503000000490 -> POINT_0x503000000340
+POINT_0x503000000490 -> POINT_0x5030000005b0
+POINT_0x503000000340 -> POINT_0x5030000003a0
+POINT_0x5030000003a0 -> POINT_0x503000000400
+POINT_0x5030000005b0 -> POINT_0x503000000520
+POINT_0x5030000005b0 -> POINT_0x5030000005e0
+POINT_0x503000000520 -> POINT_0x5030000004f0
+POINT_0x503000000520 -> POINT_0x503000000550
+POINT_0x503000000700 -> POINT_0x503000000640
+POINT_0x503000000700 -> POINT_0x503000000730
+POINT_0x503000000640 -> POINT_0x5030000006a0
 }

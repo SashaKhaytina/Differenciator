@@ -33,7 +33,7 @@ int main()
 
     // SOLVE_____________________________________________________________________________________________________________
 
-    // solve(tree.root);
+    solve(tree.root);
     dump(tree.root, &dumps_counter, &all_var);
 
 
@@ -45,7 +45,7 @@ int main()
     diff_tree.root = diff(tree.root, file_tex, &all_var);
 
     
-    // solve(diff_tree.root);
+    solve(diff_tree.root);
     dump(diff_tree.root, &dumps_counter, &all_var);
 
 
