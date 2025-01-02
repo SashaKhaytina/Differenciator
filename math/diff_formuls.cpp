@@ -191,3 +191,4 @@ static Node* copy_branch(Node* current_node)
     else                                return create_new_node_op (current_node->type, current_node->value.op_num,  copy_branch(current_node->left), copy_branch(current_node->right));
 
 }
+

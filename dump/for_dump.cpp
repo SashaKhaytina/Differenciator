@@ -107,6 +107,6 @@ void to_do_log_file(ForDump* dumps_counter)
         fprintf(file, "<div align=\"center\"><img src=\"%s\"></div>\n\n\n", sample);
 
     }
-
+ 
     fclose(file);
 }

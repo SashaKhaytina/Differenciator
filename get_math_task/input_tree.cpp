@@ -45,7 +45,3 @@ void get_tree(FILE* file, Tree* tree, VariableArr* all_var, Token* token)
 
     free_needless_tokens(token);
 }
-
-
-
-

@@ -113,3 +113,4 @@ Elem_t calculate_ln(Node* node1, Node* node2)
 
     return val;
 }
+

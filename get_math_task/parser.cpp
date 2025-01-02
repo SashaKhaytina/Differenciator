@@ -237,3 +237,4 @@ Node* GetVariable(Token* token, VariableArr* all_var)
 //     if (cur_node->type == OPERATION) printf("%s\n", op_arr[cur_node->value.op_num].name);
 //     // printf("TOKEN[%d] (Node) = {%d - type, %d - value}\n", i, token->array[i].type, token->array[i].value);
 // }
+

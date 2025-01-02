@@ -15,3 +15,4 @@ void calculate_triv_pow(Node* node, int* diference);
 
 
 #endif
+

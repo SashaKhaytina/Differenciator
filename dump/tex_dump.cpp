@@ -248,3 +248,4 @@ void tex_dump_pow(FILE* file, Node* current_node, VariableArr* all_var)
 }
 
 
+ 

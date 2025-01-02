@@ -56,7 +56,5 @@ int main()
     
     free_tree(diff_tree.root); diff_tree.root = NULL;
     free_val(&all_var);
-
-
 }
 
