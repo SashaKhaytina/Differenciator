@@ -7,10 +7,6 @@
 #include "../tree_s__commands/tree_commands.h"
 #include "../math/math_commands.h"
 
-// void print_node_now(Node* cur_node, VariableArr* all_var);
-
-
-
 
 // (token->current_ind < token->size) - it is very sad. We can do operation '\n' like '$'. 
 // And everywhere (token->current_ind < token->size)?
@@ -45,7 +41,7 @@ Node* GetNumber(Token* token)
         token->current_ind++; 
         return token->array[token->current_ind - 1];
     }
-    printf("ERROR SYNTAX. want num in %ld token\n", token->current_ind); // position will be better!
+    printf("ERROR SYNTAX. want num in %d token\n", token->current_ind); // position will be better!
     return NULL;
 }
 

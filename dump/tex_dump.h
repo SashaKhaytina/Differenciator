@@ -7,8 +7,9 @@
 void fprint_tree(FILE* file, Node* node, VariableArr* all_var);
 void fprint_node(FILE* file, Node* node, VariableArr* all_var);
 
+void tex_dump_title(FILE* file);
+void tex_dump_end_title(FILE* file);
 
-void tex_dump_start(FILE* file, Node* node, VariableArr* all_var);
 void tex_dump_end(FILE* file, Node* current_node, Node* diff_node, VariableArr* all_var);
 
 void tex_dump_num(FILE* file, Node* current_node, VariableArr* all_var);

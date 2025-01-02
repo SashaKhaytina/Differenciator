@@ -88,13 +88,20 @@ void fprint_tree(FILE* file, Node* node, VariableArr* all_var)
 }
 
 
-
-
-void tex_dump_start(FILE* file, Node* current_node, VariableArr* all_var)
+void tex_dump_title(FILE* file)
 {
-    fprintf(file, "$\\\\d( ");
-    fprint_tree(file, current_node, all_var);
-    fprintf(file, ") = $");
+    fprintf(file, "\\documentclass{article}\n");
+    fprintf(file, "\\usepackage{graphicx}\n");
+    fprintf(file, "\\usepackage[russian]{babel}\n");
+    fprintf(file, "\\title{Differenciator}\n");
+    fprintf(file, "\\begin{document}\n");
+    fprintf(file, "\\maketitle\n");
+    fprintf(file, "\\section{Возьмем эту производную}\n\n\n");
+}
+
+void tex_dump_end_title(FILE* file)
+{
+    fprintf(file, "\\end{document}\n");
 }
 
 
