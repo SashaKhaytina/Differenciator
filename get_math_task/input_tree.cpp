@@ -9,6 +9,7 @@
 
 #include "../math/math_commands.h"
 #include "../tree_s__commands/tree_commands.h"
+#include "../tree_s__commands/free.h"
 
 
 static size_t size_file    (FILE* file);
@@ -27,9 +28,8 @@ static size_t size_file(FILE* file)
 }
 
 
-void get_tree(FILE* file, Tree* tree, VariableArr* all_var)
+void get_tree(FILE* file, Tree* tree, VariableArr* all_var, Token* token)
 {
-    Token token = {};
     size_t len_text = size_file(file);
 
     char arr_file_tree[MAX_TOKEN_S_ARR_SIZE] = {};
@@ -37,11 +37,15 @@ void get_tree(FILE* file, Tree* tree, VariableArr* all_var)
     size_t count_symbol = fread(arr_file_tree, sizeof(char), len_text, file);
     if (count_symbol != len_text) printf("ERROR read file\n");
 
-    init_token(&token, len_text);
+    init_token(token, len_text);
 
-    get_token(&token, arr_file_tree, all_var);
+    get_token(token, arr_file_tree, all_var);
 
-    tree->root = GetGraph(&token, all_var);
+    tree->root = GetGraph(token, all_var);
+
+    free_needless_tokens(token);
 }
+
+
 
 

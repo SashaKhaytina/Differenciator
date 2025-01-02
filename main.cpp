@@ -3,13 +3,15 @@
 #include "dump/for_dump.h"
 #include "tree_s__commands/tree_commands.h"
 #include "get_math_task/input_tree.h"
+#include "get_math_task/token.h"
 #include "math/differentiation.h"
+#include "tree_s__commands/free.h"
 
 
 
 // void print_tree(Node* node, VariableArr* all_var);
 // void print_node(Node* node, VariableArr* all_var);
-
+// void free_val(VariableArr* all_var);
 
 int main()
 {
@@ -20,9 +22,10 @@ int main()
 
     VariableArr all_var = {};
 
+    Token token = {};
     
 
-    get_tree(file, &tree, &all_var);
+    get_tree(file, &tree, &all_var, &token);
     
     dump(tree.root, &dumps_counter, &all_var);
     
@@ -30,11 +33,11 @@ int main()
 
     // SOLVE_____________________________________________________________________________________________________________
 
-    solve(tree.root);
+    // solve(tree.root);
     dump(tree.root, &dumps_counter, &all_var);
 
 
-    // DIFF______________________________________________________________________________________________________________
+    // // DIFF______________________________________________________________________________________________________________
     
     FILE* file_tex = fopen(FILE_TEX, "w");
     Tree diff_tree = {};
@@ -42,14 +45,37 @@ int main()
     diff_tree.root = diff(tree.root, file_tex, &all_var);
 
     
-    solve(diff_tree.root);
+    // solve(diff_tree.root);
     dump(diff_tree.root, &dumps_counter, &all_var);
 
 
     dump(diff_tree.root, &dumps_counter, &all_var);
+
+    fclose(file);
+    fclose(file_tex);
+
+    free_tree(tree.root);
+    free_tokens(&token);
+
+    printf("Print diff\n");
+    
+    free_tree(diff_tree.root); diff_tree.root = NULL;
+    free_val(&all_var);
+
 
 }
 
+
+
+
+// void free_val(VariableArr* all_var)
+// {
+//     for (int i = 0; i < all_var->size; i++)
+//     {
+//         printf("ii - %d", i);
+//         free(all_var->arr[i].name); all_var->arr[i].name = NULL;
+//     }
+// }
 
 
 // void print_tree(Node* node, VariableArr* all_var)

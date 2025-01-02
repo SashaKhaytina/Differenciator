@@ -1,6 +1,7 @@
 #include "tree_commands.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <malloc.h>
 
 #include "../math/math_commands.h"

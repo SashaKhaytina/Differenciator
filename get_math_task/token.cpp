@@ -61,7 +61,7 @@ static void get_word(int* current_symbol, char* arr_file_tree, Token* token, Var
         (*current_symbol)++;
     }
 
-    char* name = (char*) calloc(len_word, sizeof(char));
+    char* name = (char*) calloc(len_word + 1, sizeof(char));
     strcpy(name, temporary_name);
 
     bool is_oper = find_and_create_op(token, name);
@@ -76,6 +76,10 @@ static void get_word(int* current_symbol, char* arr_file_tree, Token* token, Var
         token->array[token->size] = _VAR(num_var);
         token->size++;
 
+    }
+    else
+    {
+        free(name);
     }
 
 }
@@ -136,6 +140,7 @@ int find_variable(char* var_name, VariableArr* all_var)
     {
         if (strcmp(all_var->arr[i].name, var_name) == 0) 
         { 
+            free(var_name);
             return all_var->arr[i].num; 
         }
     }
@@ -174,8 +179,6 @@ static bool find_and_create_op(Token* token, char* name)
 
     return is_oper;
 }
-
-
 
 
 void print_token(Token* token, VariableArr* all_var)

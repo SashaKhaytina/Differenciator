@@ -15,6 +15,7 @@ const char* const FILE_TEX              = "all_dumps/tex_files/tex.tex";
 const size_t      MAX_NAME_IDENT_SIZE   = 200;
 const int         MAX_OPER_SYMBOLS_SIZE = 2;
 const int         MAX_TOKEN_S_ARR_SIZE  = 100;
+const int         MAX_VAR_COUNT         = 10;
 
 
 enum TypeNode
@@ -50,7 +51,7 @@ struct Variable
 
 struct VariableArr
 {
-    Variable arr[10];
+    Variable arr[MAX_VAR_COUNT];
     size_t size;
 };
 
