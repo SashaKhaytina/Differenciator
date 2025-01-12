@@ -39,7 +39,7 @@ void get_tree(FILE* file, Tree* tree, VariableArr* all_var, Token* token)
 
     init_token(token, len_text);
 
-    get_token(token, arr_file_tree, all_var);
+    get_token(token, arr_file_tree, all_var); // почему ноды создаются не во время синтаксического разбора, а во время деления на лексемы? создание токенов это деление на лексемы, в этом и идея такого прохода перед рекурсивным спуском, это сделано для его упрощения
 
     tree->root = GetGraph(token, all_var);
 

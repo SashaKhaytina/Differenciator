@@ -18,10 +18,10 @@ Node* diff(Node* current_node, FILE* file, VariableArr* all_var)
             tex_dump_num(file, current_node, all_var);
 
             Node* diff_node = _NUM(0);
-            
+
             return diff_node;
         }
-        
+
         case VARIABLE:
         {
             tex_dump_var(file, current_node, all_var);
@@ -34,15 +34,15 @@ Node* diff(Node* current_node, FILE* file, VariableArr* all_var)
         case OPERATION:
         {
             Node* diff_node = NULL;
-            
+
             for (int i = 0; i < LEN_STRUCT_OP_ARR; i++)
             {
-                if (op_arr[i].num == current_node->value.op_num) {diff_node = op_arr[i].diff_form(current_node, file, all_var); break;}
+                if (op_arr[i].num == current_node->value.op_num) {diff_node = op_arr[i].diff_form(current_node, file, all_var); break; } // не пиши так никогда, это нечитаемо
             }
 
             return diff_node;
         }
-    
+
         default:
         {
             printf("ERROR\n");

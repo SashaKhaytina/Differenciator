@@ -1,4 +1,4 @@
-#include "differenciator_h.h" 
+#include "differenciator_h.h"
 #include "math/math_commands.h"
 #include "dump/for_dump.h"
 #include "tree_s__commands/tree_commands.h"
@@ -14,17 +14,17 @@ int main()
     FILE* file = fopen(FILE_MATH, "r");
     Tree tree = {};
 
-    ForDump dumps_counter = 0;
+    ForDump dumps_counter = 0; // why do you need this type
 
     VariableArr all_var = {};
 
     Token token = {};
-    
+
 
     get_tree(file, &tree, &all_var, &token);
-    
+
     dump(tree.root, &dumps_counter, &all_var);
-    
+
 
 
     // SOLVE_____________________________________________________________________________________________________________
@@ -34,7 +34,7 @@ int main()
 
 
     // // DIFF______________________________________________________________________________________________________________
-    
+
     FILE* file_tex = fopen(FILE_TEX, "w");
     tex_dump_title(file_tex);
 
@@ -53,7 +53,7 @@ int main()
 
     free_tree(tree.root);
     free_tokens(&token);
-    
+
     free_tree(diff_tree.root); diff_tree.root = NULL;
     free_val(&all_var);
 }

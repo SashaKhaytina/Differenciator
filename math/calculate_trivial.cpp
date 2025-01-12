@@ -60,7 +60,7 @@ void calculate_triv_add(Node* node, int* diference)
     assert(node);
 
 
-    if (is_null(node->left)) 
+    if (is_null(node->left))
     {
         (*diference)++;
 
@@ -69,7 +69,7 @@ void calculate_triv_add(Node* node, int* diference)
         return;
     }
 
-    else if (is_null(node->right)) 
+    else if (is_null(node->right))
     {
         (*diference)++;
 
@@ -85,7 +85,7 @@ void calculate_triv_sub(Node* node, int* diference)
     assert(node);
 
 
-    if (is_null(node->right)) 
+    if (is_null(node->right))
     {
         (*diference)++;
 
@@ -95,7 +95,7 @@ void calculate_triv_sub(Node* node, int* diference)
     }
 
 
-    return; 
+    return;
 }
 
 
@@ -104,7 +104,7 @@ void calculate_triv_mul(Node* node, int* diference)
     assert(node);
 
 
-    if (is_null(node->left) || is_null(node->right)) 
+    if (is_null(node->left) || is_null(node->right))
     {
         (*diference)++;
 
@@ -119,7 +119,7 @@ void calculate_triv_mul(Node* node, int* diference)
         return;
     }
 
-    else if (is_one(node->left)) 
+    else if (is_one(node->left))
     {
         (*diference)++;
 
@@ -128,7 +128,7 @@ void calculate_triv_mul(Node* node, int* diference)
         return;
     }
 
-    else if (is_one(node->right)) 
+    else if (is_one(node->right))
     {
         (*diference)++;
 
@@ -144,7 +144,7 @@ void calculate_triv_div(Node* node, int* diference)
     assert(node);
 
 
-    if (is_one(node->right)) 
+    if (is_one(node->right))
     {
         (*diference)++;
 
@@ -180,7 +180,7 @@ void calculate_triv_ln(Node* node, int* diference)
 
 
     return;
-}
+} // что это?
 
 
 void calculate_triv_pow(Node* node, int* diference)
@@ -188,7 +188,7 @@ void calculate_triv_pow(Node* node, int* diference)
     assert(node);
 
 
-    if (is_null(node->left)) 
+    if (is_null(node->left))
     {
         (*diference)++;
 
@@ -199,7 +199,7 @@ void calculate_triv_pow(Node* node, int* diference)
         node->value.num = 1;
         node->left      = NULL;
         node->right     = NULL;
-        
+
         return;
     }
 }
