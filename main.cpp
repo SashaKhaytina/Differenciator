@@ -14,7 +14,7 @@ int main()
     FILE* file = fopen(FILE_MATH, "r");
     Tree tree = {};
 
-    ForDump dumps_counter = 0; // why do you need this type
+    ForDump dumps_counter = 0;
 
     VariableArr all_var = {};
 

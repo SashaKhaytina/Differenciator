@@ -12,8 +12,6 @@ Node* create_new_node_num(TypeNode type, Elem_t num, Node* left, Node* right)
 {
     Node* new_node = (Node*) calloc(1, sizeof(Node));
 
-    // Лучше так (один шаблон) или прописывать как есть? (не передавать type, left, right, а сделать сразу NULL)? ответ так норм
-
     new_node->type      = NUMBER;
     new_node->value.num = num;
     new_node->left      = left;
@@ -110,9 +108,10 @@ void solve(Node* current_node)
     while (diference != 0)
     {
         diference = 0;
-        solve_subtree(current_node, &diference);
-
+        
         trivial_solver(current_node, &diference);
+
+        solve_subtree(current_node, &diference);
     }
 
 }

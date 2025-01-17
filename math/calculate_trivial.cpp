@@ -160,7 +160,19 @@ void calculate_triv_sin(Node* node, int* diference)
     assert(node);
 
 
-    return;
+    if (is_null(node->right))
+    {
+        (*diference)++;
+
+        free_tree(node->right);
+
+        node->type      = NUMBER;
+        node->value.num = 0;
+        node->left      = NULL;
+        node->right     = NULL;
+
+        return;
+    }
 }
 
 
@@ -169,7 +181,19 @@ void calculate_triv_cos(Node* node, int* diference)
     assert(node);
 
 
-    return;
+    if (is_null(node->right))
+    {
+        (*diference)++;
+
+        free_tree(node->right);
+
+        node->type      = NUMBER;
+        node->value.num = 1;
+        node->left      = NULL;
+        node->right     = NULL;
+
+        return;
+    }
 }
 
 
@@ -179,8 +203,20 @@ void calculate_triv_ln(Node* node, int* diference)
     assert(node);
 
 
-    return;
-} // что это?
+    if (is_one(node->right))
+    {
+        (*diference)++;
+
+        free_tree(node->right);
+
+        node->type      = NUMBER;
+        node->value.num = 0;
+        node->left      = NULL;
+        node->right     = NULL;
+
+        return;
+    }
+}
 
 
 void calculate_triv_pow(Node* node, int* diference)

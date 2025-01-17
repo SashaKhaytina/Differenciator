@@ -37,7 +37,11 @@ Node* diff(Node* current_node, FILE* file, VariableArr* all_var)
 
             for (int i = 0; i < LEN_STRUCT_OP_ARR; i++)
             {
-                if (op_arr[i].num == current_node->value.op_num) {diff_node = op_arr[i].diff_form(current_node, file, all_var); break; } // не пиши так никогда, это нечитаемо
+                if (op_arr[i].num == current_node->value.op_num) 
+                {
+                    diff_node = op_arr[i].diff_form(current_node, file, all_var);
+                    break;
+                }
             }
 
             return diff_node;
